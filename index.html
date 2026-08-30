@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prova Paraná - Guia Completo</title>
+    <style>
+        /* Estilos Globais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f9;
+        }
+
+        /* Cabeçalho e Navegação */
+        header {
+            background-color: #004085;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav li {
+            position: relative;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 1.2rem;
+            display: block;
+        }
+
+        nav a:hover {
+            background-color: #002752;
+        }
+
+        /* Menu Cascata (Dropdown) */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #003366;
+            min-width: 180px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        /* Botão Hambúrguer (Mobile) */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            border-radius: 2px;
+        }
+
+        /* Conteúdo Principal */
+        main {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #004085;
+            margin-bottom: 0.8rem;
+        }
+
+        ul {
+            margin-left: 1.5rem;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        footer a {
+            color: #66b2ff;
+        }
+
+        /* Responsividade (Menu Hambúrguer) */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: #004085;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .dropdown-menu {
+                position: static;
+                background-color: #002752;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <div class="logo">Prova Paraná</div>
+        
+        <!-- Botão Hambúrguer para Mobile -->
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <!-- Navegação Principal -->
+        <nav>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#inicio">Início</a></li>
+                
+                <!-- Menu Cascata (Dropdown) -->
+                <li class="dropdown">
+                    <a href="#">Sobre &#9662;</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#oque-e">O que é?</a></li>
+                        <li><a href="#objetivos">Objetivos</a></li>
+                    </ul>
+                </li>
+                
+                <li><a href="#disciplinas">Disciplinas</a></li>
+                <li><a href="#dicas">Dicas de Estudo</a></li>
+                <li><a href="#resultados">Resultados</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Conteúdo do Site -->
+    <main>
+        <section id="oque-e">
+            <h2>O que é a Prova Paraná?</h2>
+            <p>A Prova Paraná é uma avaliação diagnóstica elaborada pela Secretaria de Estado da Educação do Paraná (SEED). Ela tem como objetivo identificar o nível de aprendizado e as dificuldades dos estudantes da rede pública de ensino.</p>
+        </section>
+
+        <section id="objetivos">
+            <h2>Objetivos</h2>
+            <p>A avaliação serve para fornecer dados concretos sobre o desempenho escolar, ajudando os educadores a reestruturarem seus planejamentos e melhorarem a qualidade geral do ensino no estado.</p>
+        </section>
+
+        <section id="disciplinas">
+            <h2>Disciplinas Avaliadas</h2>
+            <p>Os testes focam principalmente nas áreas fundamentais do conhecimento:</p>
+            <ul>
+                <li><strong>Língua Portuguesa:</strong> Avalia a leitura, interpretação de texto e análise linguística.</li>
+                <li><strong>Matemática:</strong> Avalia o raciocínio lógico, resolução de problemas e operações fundamentais.</li>
+            </ul>
+        </section>
+
+        <section id="dicas">
+            <h2>Dicas para o Estudante</h2>
+            <p>Para ter um bom desempenho e fazer a prova com tranquilidade:</p>
+            <ul>
+                <li>Durma bem na noite anterior para manter o foco.</li>
+                <li>Leia as questões e textos com bastante atenção antes de responder.</li>
+                <li>Gerencie bem o tempo para não deixar questões em branco.</li>
+                <li>Mantenha a calma e confie no que aprendeu em aula.</li>
+            </ul>
+        </section>
+
+        <section id="resultados">
+            <h2>Uso dos Resultados</h2>
+            <p>As notas não são utilizadas apenas para pontuar alunos, mas principalmente como uma ferramenta pedagógica. Diretores, professores e a gestão escolar usam as estatísticas para corrigir rotas, implementar reforços e alinhar os conteúdos pedagógicos às necessidades reais dos estudantes.</p>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2026 - Projeto Educacional Prova Paraná</p>
+        <p>Links Úteis: <a href="https://www.educacao.pr.gov.br" target="_blank">SEED-PR</a> | <a href="#inicio">Voltar ao topo</a></p>
+        <p>Desenvolvido para fins escolares.</p>
+    </footer>
+
+    <!-- JavaScript para o Menu Hambúrguer -->
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+    </script>
+</body>
+                                                                </html>
+                                                                
