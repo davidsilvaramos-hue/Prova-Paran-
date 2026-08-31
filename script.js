@@ -1,283 +1,765 @@
-function toggleMenu() {
+/* =========================================
+   MENU DO SITE
+========================================= */
 
+function toggleMenu() {
     const menu = document.getElementById("menu");
 
     if (menu) {
-
         menu.classList.toggle("active");
-
     }
-
 }
 
 
-/* =========================
-   CORREÇÃO DO QUIZ
-========================= */
+/* =========================================
+   SISTEMA DE ESCOLHA
+========================================= */
 
-function corrigirQuiz() {
-
-    const respostasCorretas = {
-
-        q1: "c",
-
-        q2: "a",
-
-        q3: "b",
-
-        q4: "a",
-
-        q5: "c",
-
-        q6: "c",
-
-        q7: "c",
-
-        q8: "a",
-
-        q9: "b",
-
-        q10: "b"
-
-    };
+let nivelEscolhido = "";
+let serieEscolhida = "";
+let materiaEscolhida = "";
+let atividadeEscolhida = "";
 
 
-    let acertos = 0;
+/* =========================================
+   MATÉRIAS
+========================================= */
 
-    let respondidas = 0;
-
-    const total = Object.keys(respostasCorretas).length;
-
-
-    for (const questao in respostasCorretas) {
-
-        const resposta =
-            document.querySelector(
-                'input[name="' + questao + '"]:checked'
-            );
-
-
-        if (resposta) {
-
-            respondidas++;
-
-            if (
-                resposta.value ===
-                respostasCorretas[questao]
-            ) {
-
-                acertos++;
-
-            }
-
-        }
-
+const materiasFundamental = [
+    {
+        id: "portugues",
+        nome: "Língua Portuguesa",
+        emoji: "📚"
+    },
+    {
+        id: "matematica",
+        nome: "Matemática",
+        emoji: "➗"
+    },
+    {
+        id: "ciencias",
+        nome: "Ciências",
+        emoji: "🔬"
+    },
+    {
+        id: "historia",
+        nome: "História",
+        emoji: "🏛️"
+    },
+    {
+        id: "geografia",
+        nome: "Geografia",
+        emoji: "🌎"
+    },
+    {
+        id: "ingles",
+        nome: "Língua Inglesa",
+        emoji: "🇺🇸"
+    },
+    {
+        id: "arte",
+        nome: "Arte",
+        emoji: "🎨"
+    },
+    {
+        id: "educacao-fisica",
+        nome: "Educação Física",
+        emoji: "🏃"
     }
+];
 
 
-    const resultado =
-        document.getElementById("resultadoQuiz");
-
-
-    if (!resultado) {
-
-        return;
-
+const materiasMedio = [
+    {
+        id: "portugues",
+        nome: "Língua Portuguesa",
+        emoji: "📚"
+    },
+    {
+        id: "matematica",
+        nome: "Matemática",
+        emoji: "➗"
+    },
+    {
+        id: "historia",
+        nome: "História",
+        emoji: "🏛️"
+    },
+    {
+        id: "geografia",
+        nome: "Geografia",
+        emoji: "🌎"
+    },
+    {
+        id: "ingles",
+        nome: "Língua Inglesa",
+        emoji: "🇺🇸"
+    },
+    {
+        id: "biologia",
+        nome: "Biologia",
+        emoji: "🧬"
+    },
+    {
+        id: "fisica",
+        nome: "Física",
+        emoji: "⚡"
+    },
+    {
+        id: "quimica",
+        nome: "Química",
+        emoji: "⚗️"
+    },
+    {
+        id: "filosofia",
+        nome: "Filosofia",
+        emoji: "🧠"
+    },
+    {
+        id: "sociologia",
+        nome: "Sociologia",
+        emoji: "👥"
+    },
+    {
+        id: "arte",
+        nome: "Arte",
+        emoji: "🎨"
+    },
+    {
+        id: "educacao-fisica",
+        nome: "Educação Física",
+        emoji: "🏃"
     }
+];
 
 
-    if (respondidas < total) {
+/* =========================================
+   ESCOLHER NÍVEL
+========================================= */
 
-        resultado.style.display = "block";
+function selecionarNivel(nivel, botao) {
 
-        resultado.className =
-            "quiz-result warning-result";
+    nivelEscolhido = nivel;
 
-        resultado.innerHTML =
+    serieEscolhida = "";
+    materiaEscolhida = "";
+    atividadeEscolhida = "";
 
-            "<h2>⚠️ Responda todas as questões</h2>" +
-
-            "<p>Você respondeu " +
-            respondidas +
-            " de " +
-            total +
-            " questões.</p>";
-
-        resultado.scrollIntoView({
-            behavior: "smooth"
+    document
+        .querySelectorAll(".selection-card")
+        .forEach(card => {
+            card.classList.remove("selected");
         });
 
+    if (botao) {
+        botao.classList.add("selected");
+    }
+
+
+    const stepSerie =
+        document.getElementById("stepSerie");
+
+    const stepMateria =
+        document.getElementById("stepMateria");
+
+    const stepAtividade =
+        document.getElementById("stepAtividade");
+
+
+    if (stepSerie) {
+        stepSerie.classList.remove("disabled");
+    }
+
+    if (stepMateria) {
+        stepMateria.classList.add("disabled");
+    }
+
+    if (stepAtividade) {
+        stepAtividade.classList.add("disabled");
+    }
+
+
+    criarSeries();
+
+    atualizarResumo();
+
+    rolarPara("stepSerie");
+}
+
+
+/* =========================================
+   CRIAR SÉRIES
+========================================= */
+
+function criarSeries() {
+
+    const container =
+        document.getElementById("seriesOptions");
+
+    if (!container) {
+        return;
+    }
+
+
+    container.innerHTML = "";
+
+
+    let series = [];
+
+
+    if (nivelEscolhido === "fundamental") {
+
+        series = [
+            "1º ano",
+            "2º ano",
+            "3º ano",
+            "4º ano",
+            "5º ano",
+            "6º ano",
+            "7º ano",
+            "8º ano",
+            "9º ano"
+        ];
+
+    }
+
+
+    if (nivelEscolhido === "medio") {
+
+        series = [
+            "1º ano",
+            "2º ano",
+            "3º ano"
+        ];
+
+    }
+
+
+    series.forEach((serie, index) => {
+
+        const botao =
+            document.createElement("button");
+
+        botao.className =
+            "selection-card";
+
+        botao.innerHTML = `
+            <span>🎓</span>
+            <strong>${serie}</strong>
+            <small>${nivelEscolhido === "fundamental"
+                ? "Ensino Fundamental"
+                : "Ensino Médio"
+            }</small>
+        `;
+
+
+        botao.onclick = function() {
+
+            selecionarSerie(
+                index + 1,
+                serie,
+                botao
+            );
+
+        };
+
+
+        container.appendChild(botao);
+
+    });
+
+}
+
+
+/* =========================================
+   ESCOLHER SÉRIE
+========================================= */
+
+function selecionarSerie(numero, nome, botao) {
+
+    serieEscolhida = nome;
+
+
+    const cards =
+        document.querySelectorAll(
+            "#seriesOptions .selection-card"
+        );
+
+
+    cards.forEach(card => {
+
+        card.classList.remove("selected");
+
+    });
+
+
+    if (botao) {
+
+        botao.classList.add("selected");
+
+    }
+
+
+    const stepMateria =
+        document.getElementById("stepMateria");
+
+
+    const stepAtividade =
+        document.getElementById("stepAtividade");
+
+
+    if (stepMateria) {
+
+        stepMateria.classList.remove(
+            "disabled"
+        );
+
+    }
+
+
+    if (stepAtividade) {
+
+        stepAtividade.classList.add(
+            "disabled"
+        );
+
+    }
+
+
+    criarMaterias();
+
+    atualizarResumo();
+
+    rolarPara("stepMateria");
+
+}
+
+
+/* =========================================
+   CRIAR MATÉRIAS
+========================================= */
+
+function criarMaterias() {
+
+    const container =
+        document.getElementById("materiaOptions");
+
+
+    if (!container) {
+
         return;
 
     }
 
 
-    const porcentagem =
-        Math.round((acertos / total) * 100);
+    container.innerHTML = "";
 
 
-    localStorage.setItem(
-        "ultimoResultado",
-        acertos + "/" + total
-    );
+    let materias = [];
 
 
-    localStorage.setItem(
-        "ultimaPorcentagem",
-        porcentagem
-    );
+    if (nivelEscolhido === "fundamental") {
 
+        materias =
+            materiasFundamental;
 
-    let mensagem = "";
+    } else {
 
-
-    if (porcentagem === 100) {
-
-        mensagem =
-            "🏆 Excelente! Você acertou tudo!";
-
-    }
-
-    else if (porcentagem >= 70) {
-
-        mensagem =
-            "👏 Muito bom! Continue praticando.";
-
-    }
-
-    else if (porcentagem >= 50) {
-
-        mensagem =
-            "👍 Bom começo! Revise alguns conteúdos.";
-
-    }
-
-    else {
-
-        mensagem =
-            "📚 Continue estudando e tente novamente.";
+        materias =
+            materiasMedio;
 
     }
 
 
-    resultado.style.display = "block";
+    materias.forEach(materia => {
 
-    resultado.className =
-        "quiz-result success-result";
-
-
-    resultado.innerHTML =
-
-        "<div class='big-score'>" +
-        acertos +
-        "/" +
-        total +
-        "</div>" +
-
-        "<h2>" +
-        mensagem +
-        "</h2>" +
-
-        "<p>Você acertou " +
-        porcentagem +
-        "% das questões.</p>" +
-
-        "<a href='resultados.html' class='btn'>" +
-        "📊 Ver resultado" +
-        "</a>" +
-
-        "<button onclick='refazerQuiz()' class='btn secondary'>" +
-        "🔄 Fazer novamente" +
-        "</button>";
+        const botao =
+            document.createElement("button");
 
 
-    resultado.scrollIntoView({
-        behavior: "smooth"
+        botao.className =
+            "selection-card";
+
+
+        botao.innerHTML = `
+            <span>${materia.emoji}</span>
+            <strong>${materia.nome}</strong>
+            <small>Estudar ${materia.nome}</small>
+        `;
+
+
+        botao.onclick = function() {
+
+            selecionarMateria(
+                materia.id,
+                materia.nome,
+                botao
+            );
+
+        };
+
+
+        container.appendChild(botao);
+
     });
 
 }
 
 
-/* =========================
-   REFAZER
-========================= */
+/* =========================================
+   ESCOLHER MATÉRIA
+========================================= */
 
-function refazerQuiz() {
+function selecionarMateria(
+    id,
+    nome,
+    botao
+) {
 
-    const quiz =
-        document.getElementById("quiz");
-
-
-    if (quiz) {
-
-        quiz.reset();
-
-    }
+    materiaEscolhida = nome;
 
 
-    const resultado =
-        document.getElementById("resultadoQuiz");
+    const cards =
+        document.querySelectorAll(
+            "#materiaOptions .selection-card"
+        );
 
 
-    if (resultado) {
+    cards.forEach(card => {
 
-        resultado.style.display = "none";
+        card.classList.remove(
+            "selected"
+        );
 
-    }
-
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
     });
+
+
+    if (botao) {
+
+        botao.classList.add(
+            "selected"
+        );
+
+    }
+
+
+    const stepAtividade =
+        document.getElementById(
+            "stepAtividade"
+        );
+
+
+    if (stepAtividade) {
+
+        stepAtividade.classList.remove(
+            "disabled"
+        );
+
+    }
+
+
+    atualizarResumo();
+
+    rolarPara("stepAtividade");
 
 }
 
 
-/* =========================
-   RESULTADO
-========================= */
+/* =========================================
+   ESCOLHER ATIVIDADE
+========================================= */
+
+function iniciarAtividade(tipo) {
+
+    atividadeEscolhida = tipo;
+
+
+    atualizarResumo();
+
+
+    /*
+       Por enquanto mostramos uma mensagem.
+       Na próxima etapa vamos ligar cada botão
+       ao banco de questões, conteúdos,
+       exemplos, simulados e redação.
+    */
+
+
+    const studyArea =
+        document.getElementById(
+            "studyArea"
+        );
+
+
+    if (!studyArea) {
+
+        return;
+
+    }
+
+
+    studyArea.style.display =
+        "block";
+
+
+    let titulo = "";
+    let texto = "";
+
+
+    if (tipo === "questoes") {
+
+        titulo =
+            "📝 Questões";
+
+        texto =
+            "Você escolheu fazer questões de " +
+            materiaEscolhida +
+            " do " +
+            serieEscolhida +
+            ".";
+
+    }
+
+
+    if (tipo === "redacao") {
+
+        titulo =
+            "✍️ Redação";
+
+        texto =
+            "Você escolheu praticar redação.";
+
+    }
+
+
+    if (tipo === "conteudo") {
+
+        titulo =
+            "📖 Conteúdo";
+
+        texto =
+            "Aqui aparecerá o conteúdo de " +
+            materiaEscolhida +
+            " do " +
+            serieEscolhida +
+            ".";
+
+    }
+
+
+    if (tipo === "exemplo") {
+
+        titulo =
+            "💡 Exemplos resolvidos";
+
+        texto =
+            "Aqui aparecerão exemplos explicados " +
+            "passo a passo.";
+
+    }
+
+
+    if (tipo === "simulado") {
+
+        titulo =
+            "🎯 Simulado";
+
+        texto =
+            "Aqui será criado um simulado " +
+            "de acordo com sua série e matéria.";
+
+    }
+
+
+    studyArea.innerHTML = `
+
+        <div class="wide">
+
+            <div class="icon">
+                📚
+            </div>
+
+            <h2>
+                ${titulo}
+            </h2>
+
+            <p>
+                ${texto}
+            </p>
+
+            <p>
+                <strong>
+                    Nível:
+                </strong>
+                ${nivelEscolhido === "fundamental"
+                    ? "Ensino Fundamental"
+                    : "Ensino Médio"
+                }
+            </p>
+
+            <p>
+                <strong>
+                    Série:
+                </strong>
+                ${serieEscolhida}
+            </p>
+
+            <p>
+                <strong>
+                    Matéria:
+                </strong>
+                ${materiaEscolhida}
+            </p>
+
+            <br>
+
+            <div class="warning">
+
+                <strong>
+                    🚧 Próxima etapa
+                </strong>
+
+                <p>
+                    O sistema de questões,
+                    exemplos, conteúdos,
+                    simulados e redação será
+                    conectado nesta área.
+                </p>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    rolarPara("studyArea");
+
+}
+
+
+/* =========================================
+   RESUMO
+========================================= */
+
+function atualizarResumo() {
+
+    const resumo =
+        document.getElementById(
+            "selectionSummary"
+        );
+
+
+    const texto =
+        document.getElementById(
+            "summaryText"
+        );
+
+
+    if (!resumo || !texto) {
+
+        return;
+
+    }
+
+
+    let partes = [];
+
+
+    if (nivelEscolhido) {
+
+        partes.push(
+            nivelEscolhido === "fundamental"
+                ? "Ensino Fundamental"
+                : "Ensino Médio"
+        );
+
+    }
+
+
+    if (serieEscolhida) {
+
+        partes.push(
+            serieEscolhida
+        );
+
+    }
+
+
+    if (materiaEscolhida) {
+
+        partes.push(
+            materiaEscolhida
+        );
+
+    }
+
+
+    if (atividadeEscolhida) {
+
+        partes.push(
+            atividadeEscolhida
+        );
+
+    }
+
+
+    if (partes.length === 0) {
+
+        resumo.style.display =
+            "none";
+
+        return;
+
+    }
+
+
+    resumo.style.display =
+        "block";
+
+
+    texto.textContent =
+        partes.join(" → ");
+
+}
+
+
+/* =========================================
+   ROLAGEM
+========================================= */
+
+function rolarPara(id) {
+
+    const elemento =
+        document.getElementById(id);
+
+
+    if (!elemento) {
+
+        return;
+
+    }
+
+
+    setTimeout(() => {
+
+        elemento.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+    }, 150);
+
+}
+
+
+/* =========================================
+   FECHAR MENU NO CELULAR
+========================================= */
 
 document.addEventListener(
     "DOMContentLoaded",
     function() {
-
-        const resultado =
-            document.getElementById(
-                "ultimoResultado"
-            );
-
-
-        if (resultado) {
-
-            const ultimo =
-                localStorage.getItem(
-                    "ultimoResultado"
-                );
-
-
-            const porcentagem =
-                localStorage.getItem(
-                    "ultimaPorcentagem"
-                );
-
-
-            if (ultimo && porcentagem) {
-
-                resultado.innerHTML =
-
-                    "<div class='big-score'>" +
-                    ultimo +
-                    "</div>" +
-
-                    "<p>Você acertou " +
-                    porcentagem +
-                    "% das questões no último exercício.</p>";
-
-            }
-
-        }
-
 
         const links =
             document.querySelectorAll(
@@ -285,7 +767,7 @@ document.addEventListener(
             );
 
 
-        links.forEach(function(link) {
+        links.forEach(link => {
 
             link.addEventListener(
                 "click",
