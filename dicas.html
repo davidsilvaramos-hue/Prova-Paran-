@@ -1,86 +1,119 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Dicas — Prova Paraná">
-<title>Dicas | Prova Paraná</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dicas de Estudo | Prova Paraná</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<header class="header">
-  <a class="logo" href="index.html" aria-label="Prova Paraná - início">
-    <span class="logo-mark">PP</span><span>Prova Paraná</span>
-  </a>
-  <nav class="desktop-nav" aria-label="Navegação principal">
-    <a href="index.html">Início</a>
-    <div class="dropdown">
-      <button class="dropbtn" aria-expanded="false">Sobre ▾</button>
-      <div class="dropdown-content">
-        <a href="sobre.html">O que é</a>
+<header>
+    <div class="logo">📚 Prova Paraná</div>
+
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+    <nav id="menu">
+        <a href="index.html">Início</a>
+        <a href="disciplinas.html">Disciplinas</a>
         <a href="objetivos.html">Objetivos</a>
-      </div>
-    </div>
-    <a href="disciplinas.html">Disciplinas</a>
-    <a href="dicas.html">Dicas</a>
-    <a href="resultados.html">Resultados</a>
-  </nav>
-  <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
-  <nav class="mobile-menu" id="mobileMenu" aria-label="Menu móvel">
-    <a href="index.html">Início</a>
-    <button class="mobile-submenu" id="mobileSubmenu" aria-expanded="false">Sobre <span>+</span></button>
-    <div class="mobile-subitems" id="mobileSubitems">
-      <a href="sobre.html">O que é</a>
-      <a href="objetivos.html">Objetivos</a>
-    </div>
-    <a href="disciplinas.html">Disciplinas</a>
-    <a href="dicas.html">Dicas</a>
-    <a href="resultados.html">Resultados</a>
-  </nav>
+        <a href="dicas.html">Dicas</a>
+        <a href="resultados.html">Resultados</a>
+        <a href="sobre.html">Sobre</a>
+    </nav>
 </header>
 
 <main>
 
-<section class="page-hero">
-  <span class="eyebrow">DICAS PARA O ESTUDANTE</span>
-  <h1>Prepare-se com tranquilidade</h1>
-  <p>Pequenos hábitos ajudam você a chegar mais confiante no dia da avaliação.</p>
+<section class="page-header">
+    <span class="tag">PREPARAÇÃO</span>
+
+    <h1>Dicas de estudo</h1>
+
+    <p>
+        Algumas estratégias simples para organizar
+        melhor seus estudos.
+    </p>
 </section>
-<section class="section alt">
-  <div class="tips">
-    <article class="tip"><span>1</span><h3>Revise</h3><p>Retome os conteúdos trabalhados em sala de aula.</p></article>
-    <article class="tip"><span>2</span><h3>Pratique</h3><p>Resolva exercícios e leia textos variados.</p></article>
-    <article class="tip"><span>3</span><h3>Organize-se</h3><p>Separe o material e evite deixar tudo para a última hora.</p></article>
-    <article class="tip"><span>4</span><h3>Descanse</h3><p>Durma bem na véspera para chegar mais disposto.</p></article>
-    <article class="tip"><span>5</span><h3>Na prova</h3><p>Leia as questões com calma e administre o tempo.</p></article>
-  </div>
+
+<section class="cards">
+
+    <article class="card">
+        <div class="icon">📅</div>
+        <h3>Crie uma rotina</h3>
+        <p>
+            Separe horários específicos para estudar
+            e tente manter uma rotina.
+        </p>
+    </article>
+
+    <article class="card">
+        <div class="icon">⏱️</div>
+        <h3>Estude por blocos</h3>
+        <p>
+            Divida o estudo em períodos e faça pequenas
+            pausas para descansar.
+        </p>
+    </article>
+
+    <article class="card">
+        <div class="icon">📝</div>
+        <h3>Faça exercícios</h3>
+        <p>
+            Resolver questões ajuda a praticar e
+            identificar dificuldades.
+        </p>
+    </article>
+
+    <article class="card">
+        <div class="icon">🔄</div>
+        <h3>Faça revisões</h3>
+        <p>
+            Revise os assuntos estudados para
+            reforçar o conhecimento.
+        </p>
+    </article>
+
+    <article class="card">
+        <div class="icon">📵</div>
+        <h3>Evite distrações</h3>
+        <p>
+            Durante o estudo, tente reduzir notificações
+            e outras distrações.
+        </p>
+    </article>
+
+    <article class="card">
+        <div class="icon">💧</div>
+        <h3>Faça pausas</h3>
+        <p>
+            Descansar também faz parte de uma
+            boa rotina de estudos.
+        </p>
+    </article>
+
+</section>
+
+<section class="highlight">
+    <div>
+        <h2>💡 Uma dica importante</h2>
+        <p>
+            Não tente aprender tudo de uma vez.
+            Estude um pouco, pratique e depois revise.
+        </p>
+    </div>
 </section>
 
 </main>
 
-<footer class="footer">
-  <div>
-    <div class="footer-logo"><span class="logo-mark">PP</span> Prova Paraná</div>
-    <p>Projeto escolar · 2º Trimestre</p>
-  </div>
-  <div class="footer-links">
-    <h3>Links rápidos</h3>
-    <a href="index.html">Início</a>
-    <a href="disciplinas.html">Disciplinas</a>
-    <a href="dicas.html">Dicas</a>
-    <a href="resultados.html">Resultados</a>
-  </div>
-  <div class="footer-contact">
-    <h3>Contato</h3>
-    <p>Projeto desenvolvido para fins educacionais.</p>
-    <a href="mailto:contato@projetoprovaparana.com">contato@projetoprovaparana.com</a>
-  </div>
-  <div class="copyright">© <span id="year"></span> Projeto Prova Paraná. Todos os direitos reservados.</div>
+<footer>
+    <strong>📚 Prova Paraná</strong>
+    <p>Guia independente para estudantes.</p>
+    <p class="copyright">© 2026 Prova Paraná</p>
 </footer>
 
 <script src="script.js"></script>
+
 </body>
 </html>
