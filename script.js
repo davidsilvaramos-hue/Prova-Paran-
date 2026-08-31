@@ -1,24 +1,35 @@
-const hamburger = document.getElementById("hamburger");
-const mobileMenu = document.getElementById("mobileMenu");
-const mobileSubmenu = document.getElementById("mobileSubmenu");
-const mobileSubitems = document.getElementById("mobileSubitems");
+function toggleMenu() {
+    const menu = document.getElementById("menu");
 
-hamburger.addEventListener("click", () => {
-  const open = mobileMenu.classList.toggle("open");
-  hamburger.setAttribute("aria-expanded", open);
+    if (menu) {
+        menu.classList.toggle("active");
+    }
+}
+
+
+// Fecha o menu quando clicar em um link
+document.querySelectorAll("#menu a").forEach(function(link) {
+    link.addEventListener("click", function() {
+
+        const menu = document.getElementById("menu");
+
+        if (menu) {
+            menu.classList.remove("active");
+        }
+
+    });
 });
 
-mobileSubmenu.addEventListener("click", () => {
-  const open = mobileSubitems.classList.toggle("open");
-  mobileSubmenu.setAttribute("aria-expanded", open);
-  mobileSubmenu.querySelector("span").textContent = open ? "−" : "+";
-});
 
-document.querySelectorAll(".mobile-menu a").forEach(link => {
-  link.addEventListener("click", () => {
-    mobileMenu.classList.remove("open");
-    hamburger.setAttribute("aria-expanded", "false");
-  });
-});
+// Pequena animação ao carregar a página
+document.addEventListener("DOMContentLoaded", function() {
 
-document.getElementById("year").textContent = new Date().getFullYear();
+    const cards = document.querySelectorAll(".card");
+
+    cards.forEach(function(card, index) {
+
+        card.style.animationDelay = (index * 0.08) + "s";
+
+    });
+
+});
