@@ -1,85 +1,101 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Objetivos — Prova Paraná">
-<title>Objetivos | Prova Paraná</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objetivos | Prova Paraná</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<header class="header">
-  <a class="logo" href="index.html" aria-label="Prova Paraná - início">
-    <span class="logo-mark">PP</span><span>Prova Paraná</span>
-  </a>
-  <nav class="desktop-nav" aria-label="Navegação principal">
-    <a href="index.html">Início</a>
-    <div class="dropdown">
-      <button class="dropbtn" aria-expanded="false">Sobre ▾</button>
-      <div class="dropdown-content">
-        <a href="sobre.html">O que é</a>
+<header>
+    <div class="logo">📚 Prova Paraná</div>
+
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+    <nav id="menu">
+        <a href="index.html">Início</a>
+        <a href="disciplinas.html">Disciplinas</a>
         <a href="objetivos.html">Objetivos</a>
-      </div>
-    </div>
-    <a href="disciplinas.html">Disciplinas</a>
-    <a href="dicas.html">Dicas</a>
-    <a href="resultados.html">Resultados</a>
-  </nav>
-  <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
-  <nav class="mobile-menu" id="mobileMenu" aria-label="Menu móvel">
-    <a href="index.html">Início</a>
-    <button class="mobile-submenu" id="mobileSubmenu" aria-expanded="false">Sobre <span>+</span></button>
-    <div class="mobile-subitems" id="mobileSubitems">
-      <a href="sobre.html">O que é</a>
-      <a href="objetivos.html">Objetivos</a>
-    </div>
-    <a href="disciplinas.html">Disciplinas</a>
-    <a href="dicas.html">Dicas</a>
-    <a href="resultados.html">Resultados</a>
-  </nav>
+        <a href="dicas.html">Dicas</a>
+        <a href="resultados.html">Resultados</a>
+        <a href="sobre.html">Sobre</a>
+    </nav>
 </header>
 
 <main>
 
-<section class="page-hero">
-  <span class="eyebrow">OBJETIVOS</span>
-  <h1>Para que serve a Prova Paraná?</h1>
-  <p>A avaliação ajuda a escola a entender melhor o que os estudantes aprenderam e o que precisa ser reforçado.</p>
+<section class="page-header">
+    <span class="tag">ENTENDA A AVALIAÇÃO</span>
+
+    <h1>Objetivos</h1>
+
+    <p>
+        A avaliação pode ajudar a identificar como está
+        o desenvolvimento da aprendizagem.
+    </p>
 </section>
-<section class="section alt">
-  <div class="objectives">
-    <article><span>✓</span><div><h3>Identificar dificuldades</h3><p>Mostrar conteúdos e habilidades que precisam de mais atenção.</p></div></article>
-    <article><span>✓</span><div><h3>Acompanhar a aprendizagem</h3><p>Observar como os estudantes estão avançando.</p></div></article>
-    <article><span>✓</span><div><h3>Apoiar o planejamento</h3><p>Orientar ações pedagógicas mais adequadas.</p></div></article>
-    <article><span>✓</span><div><h3>Valorizar avanços</h3><p>Reconhecer as habilidades que já foram desenvolvidas.</p></div></article>
-  </div>
+
+<section class="cards">
+
+    <article class="card">
+        <div class="icon">🎯</div>
+        <h3>Diagnóstico</h3>
+        <p>
+            Identificar pontos fortes e conteúdos que
+            precisam ser melhor trabalhados.
+        </p>
+    </article>
+
+    <article class="card">
+        <div class="icon">📈</div>
+        <h3>Acompanhamento</h3>
+        <p>
+            Acompanhar a evolução da aprendizagem
+            ao longo do tempo.
+        </p>
+    </article>
+
+    <article class="card">
+        <div class="icon">🏫</div>
+        <h3>Planejamento</h3>
+        <p>
+            Auxiliar escolas e professores no planejamento
+            das atividades.
+        </p>
+    </article>
+
+    <article class="card">
+        <div class="icon">🤝</div>
+        <h3>Melhoria</h3>
+        <p>
+            Ajudar a identificar oportunidades para
+            melhorar o ensino e a aprendizagem.
+        </p>
+    </article>
+
+</section>
+
+<section class="wide">
+    <h2>Por que isso é importante?</h2>
+
+    <p>
+        Os resultados de uma avaliação podem ajudar a
+        perceber quais conteúdos já foram compreendidos
+        e quais ainda precisam de revisão.
+    </p>
 </section>
 
 </main>
 
-<footer class="footer">
-  <div>
-    <div class="footer-logo"><span class="logo-mark">PP</span> Prova Paraná</div>
-    <p>Projeto escolar · 2º Trimestre</p>
-  </div>
-  <div class="footer-links">
-    <h3>Links rápidos</h3>
-    <a href="index.html">Início</a>
-    <a href="disciplinas.html">Disciplinas</a>
-    <a href="dicas.html">Dicas</a>
-    <a href="resultados.html">Resultados</a>
-  </div>
-  <div class="footer-contact">
-    <h3>Contato</h3>
-    <p>Projeto desenvolvido para fins educacionais.</p>
-    <a href="mailto:contato@projetoprovaparana.com">contato@projetoprovaparana.com</a>
-  </div>
-  <div class="copyright">© <span id="year"></span> Projeto Prova Paraná. Todos os direitos reservados.</div>
+<footer>
+    <strong>📚 Prova Paraná</strong>
+    <p>Guia independente para estudantes.</p>
+    <p class="copyright">© 2026 Prova Paraná</p>
 </footer>
 
 <script src="script.js"></script>
+
 </body>
 </html>
