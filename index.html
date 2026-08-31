@@ -1,34 +1,57 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Prova Paraná | Guia do Estudante</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header>
-    <div class="logo">📚 Prova Paraná</div>
 
-    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    <a href="index.html" class="logo">
+        📚 Prova Paraná
+    </a>
+
+    <button class="menu-btn" onclick="toggleMenu()">
+        ☰
+    </button>
 
     <nav id="menu">
+
         <a href="index.html">Início</a>
+
         <a href="disciplinas.html">Disciplinas</a>
+
+        <a href="exercicios.html">Exercícios</a>
+
         <a href="objetivos.html">Objetivos</a>
+
         <a href="dicas.html">Dicas</a>
+
         <a href="resultados.html">Resultados</a>
+
         <a href="sobre.html">Sobre</a>
+
     </nav>
+
 </header>
+
 
 <main>
 
 <section class="hero">
+
     <div class="hero-text">
-        <span class="tag">GUIA DO ESTUDANTE</span>
+
+        <span class="tag">
+            GUIA DO ESTUDANTE
+        </span>
 
         <h1>
             Prepare-se melhor para a
@@ -36,127 +59,258 @@
         </h1>
 
         <p>
-            Um portal completo para estudar, revisar conteúdos,
-            conhecer as disciplinas e acompanhar seu desempenho.
+            Estude conteúdos, pratique exercícios,
+            acompanhe seu desempenho e prepare-se
+            de forma mais organizada.
         </p>
 
         <div class="buttons">
-            <a class="btn" href="disciplinas.html">Começar a estudar</a>
-            <a class="btn secondary" href="dicas.html">Ver dicas</a>
+
+            <a href="disciplinas.html" class="btn">
+                📚 Disciplinas
+            </a>
+
+            <a href="exercicios.html" class="btn secondary">
+                📝 Fazer exercícios
+            </a>
+
         </div>
+
     </div>
+
 
     <div class="hero-card">
-        <img src="cartaz_prova_parana.svg" alt="Prova Paraná">
+
+        <img
+            src="cartaz_prova_parana.png"
+            alt="Cartaz Prova Paraná"
+        >
+
     </div>
+
 </section>
 
+
 <section class="section">
+
     <div class="section-title">
-        <span class="tag">EXPLORE</span>
-        <h2>Tudo em um só lugar</h2>
-        <p>Encontre rapidamente o que você precisa.</p>
+
+        <span class="tag">
+            EXPLORE
+        </span>
+
+        <h2>
+            Tudo em um só lugar
+        </h2>
+
+        <p>
+            Escolha uma opção para continuar.
+        </p>
+
     </div>
+
 
     <div class="cards">
 
-        <article class="card">
-            <div class="icon">📖</div>
-            <h3>Disciplinas</h3>
-            <p>
-                Consulte as principais áreas de conhecimento
-                e organize seus estudos.
-            </p>
-            <a href="disciplinas.html">Ver disciplinas →</a>
-        </article>
 
         <article class="card">
-            <div class="icon">🎯</div>
-            <h3>Objetivos</h3>
+
+            <div class="icon">
+                📖
+            </div>
+
+            <h3>
+                Disciplinas
+            </h3>
+
             <p>
-                Entenda para que serve a avaliação e
-                como ela pode ajudar sua aprendizagem.
+                Veja os conteúdos separados por
+                áreas de conhecimento.
             </p>
-            <a href="objetivos.html">Conhecer objetivos →</a>
+
+            <a href="disciplinas.html">
+                Acessar disciplinas →
+            </a>
+
         </article>
 
+
         <article class="card">
-            <div class="icon">💡</div>
-            <h3>Dicas</h3>
+
+            <div class="icon">
+                📝
+            </div>
+
+            <h3>
+                Exercícios
+            </h3>
+
             <p>
-                Confira estratégias simples para melhorar
+                Resolva questões diretamente no site
+                e veja sua pontuação.
+            </p>
+
+            <a href="exercicios.html">
+                Fazer exercícios →
+            </a>
+
+        </article>
+
+
+        <article class="card">
+
+            <div class="icon">
+                🎯
+            </div>
+
+            <h3>
+                Objetivos
+            </h3>
+
+            <p>
+                Entenda a importância da avaliação
+                e seus objetivos.
+            </p>
+
+            <a href="objetivos.html">
+                Ver objetivos →
+            </a>
+
+        </article>
+
+
+        <article class="card">
+
+            <div class="icon">
+                💡
+            </div>
+
+            <h3>
+                Dicas
+            </h3>
+
+            <p>
+                Veja estratégias para melhorar
                 sua preparação.
             </p>
-            <a href="dicas.html">Ver dicas →</a>
+
+            <a href="dicas.html">
+                Ver dicas →
+            </a>
+
         </article>
 
-        <article class="card">
-            <div class="icon">📊</div>
-            <h3>Resultados</h3>
-            <p>
-                Saiba como acompanhar e entender
-                seu desempenho.
-            </p>
-            <a href="resultados.html">Ver resultados →</a>
-        </article>
 
         <article class="card">
-            <div class="icon">📝</div>
-            <h3>Revisão</h3>
+
+            <div class="icon">
+                📊
+            </div>
+
+            <h3>
+                Resultados
+            </h3>
+
             <p>
-                Organize os conteúdos que precisam
-                de mais atenção.
+                Veja informações sobre seu desempenho
+                nos exercícios.
             </p>
-            <a href="disciplinas.html">Revisar conteúdos →</a>
+
+            <a href="resultados.html">
+                Ver resultados →
+            </a>
+
         </article>
 
+
         <article class="card">
-            <div class="icon">🚀</div>
-            <h3>Preparação</h3>
+
+            <div class="icon">
+                🚀
+            </div>
+
+            <h3>
+                Começar agora
+            </h3>
+
             <p>
-                Monte uma rotina de estudos e
-                avance aos poucos.
+                Não sabe por onde começar?
+                Faça algumas questões.
             </p>
-            <a href="dicas.html">Começar →</a>
+
+            <a href="exercicios.html">
+                Começar →
+            </a>
+
         </article>
+
 
     </div>
+
 </section>
 
+
 <section class="highlight">
+
     <div>
-        <span class="tag">PREPARE-SE</span>
-        <h2>Seu próximo passo começa aqui.</h2>
+
+        <span class="tag">
+            HORA DE PRATICAR
+        </span>
+
+        <h2>
+            Teste seus conhecimentos.
+        </h2>
+
         <p>
-            Estude com organização, pratique os conteúdos
-            e acompanhe sua evolução.
+            Responda questões de diferentes disciplinas
+            e veja quantas você acertou.
         </p>
+
     </div>
 
-    <a class="btn" href="dicas.html">Ver dicas de estudo</a>
+
+    <a href="exercicios.html" class="btn">
+        Começar exercícios
+    </a>
+
 </section>
 
 </main>
 
+
 <footer>
-    <div>
-        <strong>📚 Prova Paraná</strong>
-        <p>Guia independente para estudantes.</p>
-    </div>
+
+    <strong>
+        📚 Prova Paraná
+    </strong>
+
+    <p>
+        Guia independente para estudantes.
+    </p>
 
     <div class="footer-links">
+
         <a href="index.html">Início</a>
+
         <a href="disciplinas.html">Disciplinas</a>
+
+        <a href="exercicios.html">Exercícios</a>
+
         <a href="dicas.html">Dicas</a>
+
         <a href="sobre.html">Sobre</a>
+
     </div>
 
     <p class="copyright">
-        © 2026 Prova Paraná — Guia do Estudante
+        © 2026 Prova Paraná
     </p>
+
 </footer>
+
 
 <script src="script.js"></script>
 
 </body>
-</html>    
+</html>
