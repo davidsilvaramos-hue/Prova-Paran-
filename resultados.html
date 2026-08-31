@@ -1,88 +1,97 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Resultados — Prova Paraná">
-<title>Resultados | Prova Paraná</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados | Prova Paraná</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<header class="header">
-  <a class="logo" href="index.html" aria-label="Prova Paraná - início">
-    <span class="logo-mark">PP</span><span>Prova Paraná</span>
-  </a>
-  <nav class="desktop-nav" aria-label="Navegação principal">
-    <a href="index.html">Início</a>
-    <div class="dropdown">
-      <button class="dropbtn" aria-expanded="false">Sobre ▾</button>
-      <div class="dropdown-content">
-        <a href="sobre.html">O que é</a>
+<header>
+    <div class="logo">📚 Prova Paraná</div>
+
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+    <nav id="menu">
+        <a href="index.html">Início</a>
+        <a href="disciplinas.html">Disciplinas</a>
         <a href="objetivos.html">Objetivos</a>
-      </div>
-    </div>
-    <a href="disciplinas.html">Disciplinas</a>
-    <a href="dicas.html">Dicas</a>
-    <a href="resultados.html">Resultados</a>
-  </nav>
-  <button class="hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
-  <nav class="mobile-menu" id="mobileMenu" aria-label="Menu móvel">
-    <a href="index.html">Início</a>
-    <button class="mobile-submenu" id="mobileSubmenu" aria-expanded="false">Sobre <span>+</span></button>
-    <div class="mobile-subitems" id="mobileSubitems">
-      <a href="sobre.html">O que é</a>
-      <a href="objetivos.html">Objetivos</a>
-    </div>
-    <a href="disciplinas.html">Disciplinas</a>
-    <a href="dicas.html">Dicas</a>
-    <a href="resultados.html">Resultados</a>
-  </nav>
+        <a href="dicas.html">Dicas</a>
+        <a href="resultados.html">Resultados</a>
+        <a href="sobre.html">Sobre</a>
+    </nav>
 </header>
 
 <main>
 
-<section class="page-hero">
-  <span class="eyebrow">USO DOS RESULTADOS</span>
-  <h1>O resultado não é só uma nota</h1>
-  <p>Os dados podem ajudar diretores, professores e estudantes a compreender e melhorar o processo de aprendizagem.</p>
+<section class="page-header">
+    <span class="tag">DESEMPENHO</span>
+
+    <h1>Resultados</h1>
+
+    <p>
+        Entenda como utilizar seus resultados para
+        acompanhar sua aprendizagem.
+    </p>
 </section>
-<section class="section">
-  <div class="results-flow">
-    <div class="flow-item"><strong>01</strong><h3>Avaliar</h3><p>Coletar evidências sobre o desempenho.</p></div>
-    <div class="arrow">→</div>
-    <div class="flow-item"><strong>02</strong><h3>Identificar</h3><p>Encontrar dificuldades e habilidades desenvolvidas.</p></div>
-    <div class="arrow">→</div>
-    <div class="flow-item"><strong>03</strong><h3>Planejar</h3><p>Definir ações pedagógicas para melhorar a aprendizagem.</p></div>
-    <div class="arrow">→</div>
-    <div class="flow-item"><strong>04</strong><h3>Acompanhar</h3><p>Verificar avanços e ajustar estratégias.</p></div>
-  </div>
+
+<section class="wide">
+
+    <div class="result-icon">📊</div>
+
+    <h2>Acompanhe sua evolução</h2>
+
+    <p>
+        Quando os resultados forem disponibilizados
+        pela escola ou pela plataforma oficial, você
+        poderá utilizá-los para identificar os conteúdos
+        que precisam de mais atenção.
+    </p>
+
+</section>
+
+<section class="cards">
+
+    <article class="card">
+        <div class="icon">1️⃣</div>
+        <h3>Veja seus resultados</h3>
+        <p>
+            Consulte as informações disponibilizadas
+            pela escola ou plataforma oficial.
+        </p>
+    </article>
+
+    <article class="card">
+        <div class="icon">2️⃣</div>
+        <h3>Identifique dificuldades</h3>
+        <p>
+            Descubra quais conteúdos precisam
+            de mais revisão.
+        </p>
+    </article>
+
+    <article class="card">
+        <div class="icon">3️⃣</div>
+        <h3>Continue estudando</h3>
+        <p>
+            Use os resultados como orientação
+            para melhorar seus estudos.
+        </p>
+    </article>
+
 </section>
 
 </main>
 
-<footer class="footer">
-  <div>
-    <div class="footer-logo"><span class="logo-mark">PP</span> Prova Paraná</div>
-    <p>Projeto escolar · 2º Trimestre</p>
-  </div>
-  <div class="footer-links">
-    <h3>Links rápidos</h3>
-    <a href="index.html">Início</a>
-    <a href="disciplinas.html">Disciplinas</a>
-    <a href="dicas.html">Dicas</a>
-    <a href="resultados.html">Resultados</a>
-  </div>
-  <div class="footer-contact">
-    <h3>Contato</h3>
-    <p>Projeto desenvolvido para fins educacionais.</p>
-    <a href="mailto:contato@projetoprovaparana.com">contato@projetoprovaparana.com</a>
-  </div>
-  <div class="copyright">© <span id="year"></span> Projeto Prova Paraná. Todos os direitos reservados.</div>
+<footer>
+    <strong>📚 Prova Paraná</strong>
+    <p>Guia independente para estudantes.</p>
+    <p class="copyright">© 2026 Prova Paraná</p>
 </footer>
 
 <script src="script.js"></script>
+
 </body>
 </html>
