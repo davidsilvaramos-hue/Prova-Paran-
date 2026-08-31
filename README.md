@@ -1,38 +1,69 @@
 # 📚 Prova Paraná — Guia do Estudante
 
-Site independente criado para organizar conteúdos e informações
-relacionadas à preparação dos estudantes.
+Site independente para estudantes.
 
 ## Arquivos
 
 - index.html
 - disciplinas.html
+- exercicios.html
 - objetivos.html
 - dicas.html
 - resultados.html
 - sobre.html
-- style.css
 - script.js
-- cartaz_prova_parana.svg
+- style.css
+- README.md
+- cartaz_prova_parana.png
 
-## Como abrir
+## Recursos
 
-Abra o arquivo:
+O site possui:
 
-index.html
+- Página inicial
+- Navegação entre páginas
+- Disciplinas
+- Exercícios interativos
+- Correção automática
+- Pontuação
+- Porcentagem de acertos
+- Página de resultados
+- Dicas de estudo
+- Objetivos
+- Página sobre
+- Menu para celular
 
-## Como publicar no GitHub Pages
+## Exercícios
 
-1. Envie todos os arquivos para o repositório.
-2. Entre em Settings.
-3. Entre em Pages.
-4. Em Source, selecione Deploy from a branch.
-5. Escolha a branch principal.
-6. Escolha a pasta /root.
-7. Salve.
-8. Aguarde o GitHub publicar o site.
+A página exercicios.html possui questões de múltipla escolha.
 
-## Importante
+O JavaScript calcula automaticamente:
 
-Este projeto é independente e não substitui as informações
-oficiais da Secretaria da Educação.
+- quantidade de acertos
+- quantidade total
+- porcentagem
+- mensagem de desempenho
+
+O último resultado é salvo no navegador usando localStorage.
+
+## GitHub Pages
+
+Depois de colocar todos os arquivos no repositório:
+
+1. Abra Settings.
+2. Entre em Pages.
+3. Escolha Deploy from a branch.
+4. Selecione a branch principal.
+5. Selecione /root.
+6. Salve.
+7. Aguarde a publicação.
+
+## Imagem
+
+O arquivo:
+
+cartaz_prova_parana.png
+
+deve ficar na mesma pasta dos arquivos HTML.
+
+Este projeto é independente e não substitui as informações oficiais da Secretaria da Educação.
