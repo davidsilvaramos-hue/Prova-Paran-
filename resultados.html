@@ -1,95 +1,112 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
     <title>Resultados | Prova Paraná</title>
+
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
 <header>
-    <div class="logo">📚 Prova Paraná</div>
 
-    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    <a href="index.html" class="logo">
+        📚 Prova Paraná
+    </a>
+
+    <button class="menu-btn" onclick="toggleMenu()">
+        ☰
+    </button>
 
     <nav id="menu">
+
         <a href="index.html">Início</a>
         <a href="disciplinas.html">Disciplinas</a>
+        <a href="exercicios.html">Exercícios</a>
         <a href="objetivos.html">Objetivos</a>
         <a href="dicas.html">Dicas</a>
         <a href="resultados.html">Resultados</a>
         <a href="sobre.html">Sobre</a>
+
     </nav>
+
 </header>
+
 
 <main>
 
 <section class="page-header">
-    <span class="tag">DESEMPENHO</span>
 
-    <h1>Resultados</h1>
+    <span class="tag">
+        DESEMPENHO
+    </span>
 
-    <p>
-        Entenda como utilizar seus resultados para
-        acompanhar sua aprendizagem.
-    </p>
-</section>
-
-<section class="wide">
-
-    <div class="result-icon">📊</div>
-
-    <h2>Acompanhe sua evolução</h2>
+    <h1>
+        Resultados
+    </h1>
 
     <p>
-        Quando os resultados forem disponibilizados
-        pela escola ou pela plataforma oficial, você
-        poderá utilizá-los para identificar os conteúdos
-        que precisam de mais atenção.
+        Veja a pontuação obtida no último exercício
+        realizado neste navegador.
     </p>
 
 </section>
 
-<section class="cards">
 
-    <article class="card">
-        <div class="icon">1️⃣</div>
-        <h3>Veja seus resultados</h3>
-        <p>
-            Consulte as informações disponibilizadas
-            pela escola ou plataforma oficial.
-        </p>
-    </article>
+<section class="wide result-page">
 
-    <article class="card">
-        <div class="icon">2️⃣</div>
-        <h3>Identifique dificuldades</h3>
-        <p>
-            Descubra quais conteúdos precisam
-            de mais revisão.
-        </p>
-    </article>
+    <div class="result-icon">
+        📊
+    </div>
 
-    <article class="card">
-        <div class="icon">3️⃣</div>
-        <h3>Continue estudando</h3>
-        <p>
-            Use os resultados como orientação
-            para melhorar seus estudos.
-        </p>
-    </article>
+    <h2>
+        Seu último resultado
+    </h2>
+
+    <div id="ultimoResultado">
+
+        Você ainda não realizou nenhum exercício.
+
+    </div>
+
+
+    <a href="exercicios.html"
+       class="btn">
+
+        Fazer exercícios
+
+    </a>
 
 </section>
+
 
 </main>
 
+
 <footer>
-    <strong>📚 Prova Paraná</strong>
-    <p>Guia independente para estudantes.</p>
-    <p class="copyright">© 2026 Prova Paraná</p>
+
+    <strong>
+        📚 Prova Paraná
+    </strong>
+
+    <p>
+        Guia independente para estudantes.
+    </p>
+
+    <p class="copyright">
+        © 2026 Prova Paraná
+    </p>
+
 </footer>
+
 
 <script src="script.js"></script>
 
