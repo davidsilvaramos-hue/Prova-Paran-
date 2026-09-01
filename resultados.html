@@ -1,494 +1,199 @@
-/* =====================================================
-   PROVA PARANÁ — RESULTADOS E DESEMPENHO
-===================================================== */
+function abrirConteudo() {
 
-const CHAVE_RESULTADOS = "provaParanaResultados";
+    const conteudos = {
 
+        portugues: `
+            <h2>📖 Português</h2>
 
-/* =====================================================
-   CARREGAR RESULTADOS
-===================================================== */
-
-function obterResultadosSalvos() {
-
-    try {
-
-        const dados = localStorage.getItem(
-            CHAVE_RESULTADOS
-        );
-
-        if (!dados) {
-            return [];
-        }
-
-        return JSON.parse(dados);
-
-    } catch (erro) {
-
-        console.error(
-            "Erro ao carregar resultados:",
-            erro
-        );
-
-        return [];
-    }
-}
-
-
-/* =====================================================
-   SALVAR UM RESULTADO
-===================================================== */
-
-function salvarResultado(resultado) {
-
-    const resultados =
-        obterResultadosSalvos();
-
-    resultados.push({
-
-        nivel: resultado.nivel || "",
-
-        serie: resultado.serie || "",
-
-        materia: resultado.materia || "",
-
-        atividade:
-            resultado.atividade || "Questões",
-
-        acertos:
-            Number(resultado.acertos) || 0,
-
-        erros:
-            Number(resultado.erros) || 0,
-
-        total:
-            Number(resultado.total) || 0,
-
-        porcentagem:
-            Number(resultado.porcentagem) || 0,
-
-        data:
-            new Date().toLocaleString("pt-BR")
-
-    });
-
-
-    localStorage.setItem(
-        CHAVE_RESULTADOS,
-        JSON.stringify(resultados)
-    );
-}
-
-
-/* =====================================================
-   REGISTRAR RESULTADO DA ATIVIDADE
-===================================================== */
-
-function registrarResultadoAtual(
-    acertos,
-    erros,
-    total
-) {
-
-    const porcentagem =
-        total > 0
-            ? Math.round(
-                (acertos / total) * 100
-            )
-            : 0;
-
-
-    salvarResultado({
-
-        nivel:
-            typeof nivelEscolhido !== "undefined"
-                ? nivelEscolhido
-                : "",
-
-        serie:
-            typeof serieEscolhida !== "undefined"
-                ? serieEscolhida
-                : "",
-
-        materia:
-            typeof materiaEscolhida !== "undefined"
-                ? materiaEscolhida
-                : "",
-
-        atividade:
-            typeof atividadeEscolhida !== "undefined"
-                ? atividadeEscolhida
-                : "Questões",
-
-        acertos: acertos,
-
-        erros: erros,
-
-        total: total,
-
-        porcentagem: porcentagem
-
-    });
-}
-
-
-/* =====================================================
-   CALCULAR DESEMPENHO GERAL
-===================================================== */
-
-function calcularEstatisticas() {
-
-    const resultados =
-        obterResultadosSalvos();
-
-
-    let totalQuestoes = 0;
-
-    let totalAcertos = 0;
-
-    let totalErros = 0;
-
-
-    resultados.forEach(resultado => {
-
-        totalQuestoes +=
-            Number(resultado.total) || 0;
-
-        totalAcertos +=
-            Number(resultado.acertos) || 0;
-
-        totalErros +=
-            Number(resultado.erros) || 0;
-
-    });
-
-
-    const porcentagem =
-        totalQuestoes > 0
-            ? Math.round(
-                (totalAcertos /
-                totalQuestoes) * 100
-            )
-            : 0;
-
-
-    return {
-
-        totalQuestoes,
-        totalAcertos,
-        totalErros,
-        porcentagem
-
-    };
-}
-
-
-/* =====================================================
-   MOSTRAR RESULTADOS
-===================================================== */
-
-function mostrarResultados() {
-
-    const area =
-        document.getElementById(
-            "resultadosArea"
-        );
-
-
-    if (!area) {
-        return;
-    }
-
-
-    const estatisticas =
-        calcularEstatisticas();
-
-
-    const resultados =
-        obterResultadosSalvos();
-
-
-    /* =============================================
-       NENHUM RESULTADO
-    ============================================= */
-
-    if (resultados.length === 0) {
-
-        area.innerHTML = `
-
-            <div class="wide">
-
-                <div class="icon">
-                    📊
-                </div>
-
-                <h2>
-                    Meus resultados
-                </h2>
-
-                <p>
-                    Você ainda não realizou
-                    nenhuma atividade.
-                </p>
-
-                <p>
-                    Faça algumas questões para
-                    começar a acompanhar
-                    seu desempenho.
-                </p>
-
-            </div>
-
-        `;
-
-        return;
-    }
-
-
-    /* =============================================
-       HISTÓRICO
-    ============================================= */
-
-    let historico = "";
-
-
-    resultados
-        .slice()
-        .reverse()
-        .forEach(resultado => {
-
-            const nivel =
-                resultado.nivel === "fundamental"
-                    ? "Ensino Fundamental"
-                    : "Ensino Médio";
-
-
-            historico += `
-
-                <div class="feature-card">
-
-                    <div class="feature-icon">
-                        📝
-                    </div>
-
-                    <h3>
-                        ${resultado.materia}
-                    </h3>
-
-                    <p>
-                        ${nivel}
-                    </p>
-
-                    <p>
-                        Série:
-                        <strong>
-                            ${resultado.serie}
-                        </strong>
-                    </p>
-
-                    <p>
-                        Atividade:
-                        <strong>
-                            ${resultado.atividade}
-                        </strong>
-                    </p>
-
-                    <p>
-                        ✅ Acertos:
-                        ${resultado.acertos}
-                    </p>
-
-                    <p>
-                        ❌ Erros:
-                        ${resultado.erros}
-                    </p>
-
-                    <p>
-                        📊 Aproveitamento:
-                        <strong>
-                            ${resultado.porcentagem}%
-                        </strong>
-                    </p>
-
-                    <small>
-                        ${resultado.data}
-                    </small>
-
-                </div>
-
-            `;
-
-        });
-
-
-    /* =============================================
-       EXIBIR TUDO
-    ============================================= */
-
-    area.innerHTML = `
-
-        <div class="wide">
-
-            <div class="icon">
-                📊
-            </div>
-
-            <h2>
-                Meus resultados
-            </h2>
+            <h3>Interpretação de texto</h3>
 
             <p>
-                Acompanhe seu desempenho
-                nas atividades.
+                Interpretar um texto significa entender suas ideias,
+                informações e a intenção do autor.
             </p>
 
+            <h3>Classes de palavras</h3>
 
-            <div class="feature-grid">
+            <p>
+                Substantivos dão nome aos seres e objetos.
+                Verbos indicam ações ou estados.
+                Adjetivos caracterizam os substantivos.
+            </p>
+        `,
 
-                <div class="feature-card">
+        matematica: `
+            <h2>📖 Matemática</h2>
 
-                    <div class="feature-icon">
-                        📝
-                    </div>
+            <h3>Porcentagem</h3>
 
-                    <h3>
-                        Questões
-                    </h3>
+            <p>
+                Porcentagem representa uma parte de 100.
+            </p>
 
-                    <p>
-                        ${estatisticas.totalQuestoes}
-                    </p>
+            <p>
+                Exemplo: 20% de 100 = 20.
+            </p>
 
-                </div>
+            <h3>Equações</h3>
+
+            <p>
+                Uma equação possui uma igualdade e normalmente
+                apresenta uma incógnita.
+            </p>
+
+            <p>
+                Exemplo: x + 5 = 12 → x = 7.
+            </p>
+        `,
+
+        ciencias: `
+            <h2>📖 Ciências</h2>
+
+            <h3>Seres vivos</h3>
+
+            <p>
+                Os seres vivos apresentam características como
+                crescimento, reprodução e metabolismo.
+            </p>
+
+            <h3>Corpo humano</h3>
+
+            <p>
+                O corpo humano é formado por diferentes sistemas
+                que trabalham em conjunto.
+            </p>
+        `,
+
+        historia: `
+            <h2>📖 História</h2>
+
+            <h3>Independência do Brasil</h3>
+
+            <p>
+                A Independência do Brasil foi proclamada em
+                7 de setembro de 1822.
+            </p>
+        `,
+
+        geografia: `
+            <h2>📖 Geografia</h2>
+
+            <h3>Espaço geográfico</h3>
+
+            <p>
+                A Geografia estuda o espaço e as relações entre
+                sociedade e natureza.
+            </p>
+        `,
+
+        ingles: `
+            <h2>📖 Inglês</h2>
+
+            <h3>Vocabulário básico</h3>
+
+            <p>
+                Book = livro<br>
+                School = escola<br>
+                House = casa<br>
+                Water = água
+            </p>
+        `,
+
+        biologia: `
+            <h2>📖 Biologia</h2>
+
+            <h3>Células</h3>
+
+            <p>
+                A célula é considerada a unidade básica da vida.
+            </p>
+        `,
+
+        fisica: `
+            <h2>📖 Física</h2>
+
+            <h3>Força</h3>
+
+            <p>
+                Força é uma interação capaz de alterar o movimento
+                ou deformar um corpo.
+            </p>
+
+            <p>
+                A unidade de força é o Newton (N).
+            </p>
+        `,
+
+        quimica: `
+            <h2>📖 Química</h2>
+
+            <h3>Matéria</h3>
+
+            <p>
+                Matéria é tudo aquilo que possui massa e ocupa espaço.
+            </p>
+        `,
+
+        filosofia: `
+            <h2>📖 Filosofia</h2>
+
+            <h3>O pensamento filosófico</h3>
+
+            <p>
+                A Filosofia utiliza questionamento, reflexão e
+                argumentos para investigar diferentes problemas.
+            </p>
+        `,
+
+        sociologia: `
+            <h2>📖 Sociologia</h2>
+
+            <h3>Sociedade</h3>
+
+            <p>
+                A Sociologia procura compreender as relações sociais,
+                instituições e comportamentos coletivos.
+            </p>
+        `,
+
+        arte: `
+            <h2>📖 Arte</h2>
+
+            <h3>Expressão artística</h3>
+
+            <p>
+                A arte pode utilizar pintura, música, dança,
+                teatro e outras formas de expressão.
+            </p>
+        `,
+
+        "educacao-fisica": `
+            <h2>📖 Educação Física</h2>
+
+            <h3>Atividade física</h3>
+
+            <p>
+                Atividades físicas podem contribuir para saúde,
+                condicionamento e bem-estar.
+            </p>
+        `
+    };
 
 
-                <div class="feature-card">
+    const conteudo = conteudos[materiaIdEscolhida];
 
-                    <div class="feature-icon">
-                        ✅
-                    </div>
+    document.getElementById("areaEstudo").innerHTML = `
+        <div class="conteudo-box">
 
-                    <h3>
-                        Acertos
-                    </h3>
-
-                    <p>
-                        ${estatisticas.totalAcertos}
-                    </p>
-
-                </div>
-
-
-                <div class="feature-card">
-
-                    <div class="feature-icon">
-                        ❌
-                    </div>
-
-                    <h3>
-                        Erros
-                    </h3>
-
-                    <p>
-                        ${estatisticas.totalErros}
-                    </p>
-
-                </div>
-
-
-                <div class="feature-card">
-
-                    <div class="feature-icon">
-                        📈
-                    </div>
-
-                    <h3>
-                        Aproveitamento
-                    </h3>
-
-                    <p>
-                        ${estatisticas.porcentagem}%
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <br>
-
-
-            <h3>
-                Histórico de atividades
-            </h3>
-
-
-            <div class="feature-grid">
-
-                ${historico}
-
-            </div>
-
-
-            <button
-                type="button"
-                class="selection-card"
-                style="
-                    margin-top:25px;
-                    min-height:70px;
-                "
-                onclick="limparResultados()"
-            >
-
-                🗑️
-
-                <strong>
-                    Limpar histórico
-                </strong>
-
-            </button>
+            ${conteudo || `
+                <h2>📖 Conteúdo</h2>
+                <p>Conteúdo desta disciplina em desenvolvimento.</p>
+            `}
 
         </div>
-
     `;
+
+    document.getElementById("areaEstudo").scrollIntoView({
+        behavior: "smooth"
+    });
 }
-
-
-/* =====================================================
-   LIMPAR HISTÓRICO
-===================================================== */
-
-function limparResultados() {
-
-    const confirmar =
-        confirm(
-            "Tem certeza que deseja apagar todo o histórico?"
-        );
-
-
-    if (!confirmar) {
-        return;
-    }
-
-
-    localStorage.removeItem(
-        CHAVE_RESULTADOS
-    );
-
-
-    mostrarResultados();
-}
-
-
-/* =====================================================
-   INICIALIZAÇÃO
-===================================================== */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function() {
-
-        mostrarResultados();
-
-    }
-);
