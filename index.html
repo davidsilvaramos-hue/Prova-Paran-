@@ -1,778 +1,176 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <meta
-        name="description"
-        content="Prova Paraná — plataforma de estudos para Ensino Fundamental e Ensino Médio."
-    >
-
-    <title>Prova Paraná — Guia do Estudante</title>
-
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prova Paraná | Portal de Estudos</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 
 <body>
 
-    <!-- =========================================
-         CABEÇALHO
-    ========================================== -->
+<header class="topo">
 
-    <header class="header">
+    <a href="index.html" class="logo">Prova Paraná</a>
 
-        <div class="header-content">
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
 
-            <a
-                href="index.html"
-                class="logo"
-                onclick="limparAreaEstudo()"
-            >
-                📚
-                <span>Prova Paraná</span>
-            </a>
+    <nav id="menu">
+        <a href="index.html">Início</a>
+        <a href="#estudos">Disciplinas</a>
+        <a href="#dicas">Dicas</a>
+        <a href="resultados.html">Resultados</a>
+        <a href="#sobre">Sobre</a>
+    </nav>
 
+</header>
 
-            <button
-                class="menu-button"
-                type="button"
-                onclick="toggleMenu()"
-                aria-label="Abrir menu"
-            >
-                ☰
-            </button>
+<main>
 
-        </div>
+<section class="hero">
 
+    <div class="hero-text">
 
-        <!-- MENU -->
+        <span class="tag">PORTAL EDUCACIONAL</span>
 
-        <nav
-            id="menu"
-            class="menu"
-        >
+        <h1>Prepare-se para a <strong>Prova Paraná</strong></h1>
 
-            <a href="index.html">
-                🏠 Início
-            </a>
+        <p>
+            Estude conteúdos, pratique questões, veja exemplos,
+            faça simulados e acompanhe seu desempenho.
+        </p>
 
-            <a href="disciplinas.html">
-                📚 Disciplinas
-            </a>
+        <a href="#estudos" class="botao">Começar agora</a>
 
-            <a href="objetivos.html">
-                🎯 Objetivos
-            </a>
+    </div>
 
-            <a href="dicas.html">
-                💡 Dicas de estudo
-            </a>
+    <div class="hero-img">
+        <img src="cartaz_prova_parana.png" alt="Cartaz da Prova Paraná">
+    </div>
 
-            <a href="resultados.html">
-                📊 Resultados
-            </a>
+</section>
 
-            <a href="sobre.html">
-                ℹ️ Sobre
-            </a>
 
-        </nav>
+<section id="estudos" class="secao">
 
-    </header>
+    <div class="titulo-secao">
+        <span>ESTUDOS</span>
+        <h2>Escolha seu nível</h2>
+        <p>Selecione o nível, a série e a disciplina.</p>
+    </div>
 
+    <div class="nivel-container">
 
+        <button class="nivel-card" onclick="selecionarNivel('fundamental')">
+            <div class="icone">📚</div>
+            <h3>Ensino Fundamental</h3>
+            <p>1º ao 9º ano</p>
+        </button>
 
-    <!-- =========================================
-         CONTEÚDO PRINCIPAL
-    ========================================== -->
+        <button class="nivel-card" onclick="selecionarNivel('medio')">
+            <div class="icone">🎓</div>
+            <h3>Ensino Médio</h3>
+            <p>1º ao 3º ano</p>
+        </button>
 
-    <main>
+    </div>
 
-        <!-- HERO -->
+    <div id="selecao">
 
-        <section class="hero">
+        <div id="seriesArea"></div>
+        <div id="materiasArea"></div>
+        <div id="atividadesArea"></div>
 
-            <div class="hero-content">
+    </div>
 
-                <span class="hero-badge">
-                    🎓 GUIA DO ESTUDANTE
-                </span>
+    <div id="areaEstudo"></div>
 
-                <h1>
-                    Prova Paraná
-                </h1>
+</section>
 
-                <h2>
-                    Prepare-se. Entenda. Aprenda.
-                </h2>
 
-                <p>
-                    Escolha seu nível, sua série e a matéria
-                    que deseja estudar.
-                </p>
+<section id="dicas" class="secao">
 
-                <p>
-                    Depois escolha entre questões,
-                    conteúdos, exemplos e simulados.
-                </p>
+    <div class="titulo-secao">
+        <span>DICAS</span>
+        <h2>Como estudar melhor?</h2>
+    </div>
 
-            </div>
+    <div class="cards">
 
-        </section>
+        <article class="info-card">
+            <div class="icone">📝</div>
+            <h3>Pratique</h3>
+            <p>Resolva questões para descobrir seus pontos fortes e dificuldades.</p>
+        </article>
 
+        <article class="info-card">
+            <div class="icone">📖</div>
+            <h3>Revise</h3>
+            <p>Revise os conteúdos que você teve mais dificuldade.</p>
+        </article>
 
+        <article class="info-card">
+            <div class="icone">⏰</div>
+            <h3>Tenha rotina</h3>
+            <p>Estude um pouco todos os dias e mantenha constância.</p>
+        </article>
 
-        <!-- =====================================
-             SELETOR DE ESTUDOS
-        ====================================== -->
+    </div>
 
-        <section class="study-selector">
+</section>
 
-            <div class="section-title">
 
-                <span>
-                    📖
-                </span>
+<section id="sobre" class="secao">
 
-                <div>
+    <div class="titulo-secao">
+        <span>SOBRE</span>
+        <h2>Sobre o portal</h2>
+    </div>
 
-                    <h2>
-                        Comece seus estudos
-                    </h2>
+    <p>
+        Este é um projeto educacional criado para ajudar estudantes
+        a estudar e praticar conteúdos relacionados à Prova Paraná.
+    </p>
 
-                    <p>
-                        Faça suas escolhas passo a passo.
-                    </p>
+    <p>
+        O portal possui questões, conteúdos, exemplos, simulados,
+        redação e acompanhamento de resultados.
+    </p>
 
-                </div>
+</section>
 
-            </div>
+</main>
 
 
+<footer>
 
-            <!-- =================================
-                 ETAPA 1 — NÍVEL
-            ================================== -->
+    <div>
+        <h3>Prova Paraná</h3>
+        <p>Portal de estudos educacional.</p>
+    </div>
 
-            <div class="selector-step">
+    <div>
+        <h4>Links</h4>
+        <a href="index.html">Início</a>
+        <a href="#estudos">Disciplinas</a>
+        <a href="resultados.html">Resultados</a>
+    </div>
 
-                <div class="step-header">
+    <div>
+        <h4>Projeto</h4>
+        <p>Projeto escolar para fins educacionais.</p>
+    </div>
 
-                    <span class="step-number">
-                        1
-                    </span>
+</footer>
 
-                    <div>
 
-                        <h3>
-                            Escolha seu nível
-                        </h3>
-
-                        <p>
-                            Você está no Ensino Fundamental
-                            ou Ensino Médio?
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="option-grid">
-
-                    <button
-                        type="button"
-                        class="selection-card"
-                        onclick="
-                            selecionarNivel(
-                                'fundamental',
-                                this
-                            )
-                        "
-                    >
-
-                        <span>
-                            🏫
-                        </span>
-
-                        <strong>
-                            Ensino Fundamental
-                        </strong>
-
-                        <small>
-                            Do 1º ao 9º ano
-                        </small>
-
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="selection-card"
-                        onclick="
-                            selecionarNivel(
-                                'medio',
-                                this
-                            )
-                        "
-                    >
-
-                        <span>
-                            🎓
-                        </span>
-
-                        <strong>
-                            Ensino Médio
-                        </strong>
-
-                        <small>
-                            1º, 2º e 3º ano
-                        </small>
-
-                    </button>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- =================================
-                 ETAPA 2 — SÉRIE
-            ================================== -->
-
-            <div
-                id="stepSerie"
-                class="selector-step disabled"
-            >
-
-                <div class="step-header">
-
-                    <span class="step-number">
-                        2
-                    </span>
-
-                    <div>
-
-                        <h3>
-                            Escolha sua série
-                        </h3>
-
-                        <p>
-                            Primeiro escolha o nível acima.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div
-                    id="seriesOptions"
-                    class="option-grid"
-                >
-
-                    <div class="empty-message">
-
-                        🔒
-                        Escolha o nível para
-                        liberar as séries.
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- =================================
-                 ETAPA 3 — MATÉRIA
-            ================================== -->
-
-            <div
-                id="stepMateria"
-                class="selector-step disabled"
-            >
-
-                <div class="step-header">
-
-                    <span class="step-number">
-                        3
-                    </span>
-
-                    <div>
-
-                        <h3>
-                            Escolha a matéria
-                        </h3>
-
-                        <p>
-                            Selecione uma matéria para estudar.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div
-                    id="materiaOptions"
-                    class="option-grid"
-                >
-
-                    <div class="empty-message">
-
-                        🔒
-                        Escolha sua série para
-                        liberar as matérias.
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- =================================
-                 ETAPA 4 — ATIVIDADE
-            ================================== -->
-
-            <div
-                id="stepAtividade"
-                class="selector-step disabled"
-            >
-
-                <div class="step-header">
-
-                    <span class="step-number">
-                        4
-                    </span>
-
-                    <div>
-
-                        <h3>
-                            O que você quer fazer?
-                        </h3>
-
-                        <p>
-                            Escolha uma atividade para começar.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="option-grid">
-
-                    <div class="empty-message">
-
-                        🔒
-                        Escolha uma matéria para
-                        liberar as atividades.
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- =================================
-                 RESUMO
-            ================================== -->
-
-            <div
-                id="selectionSummary"
-                class="selection-summary"
-                style="display:none;"
-            >
-
-                <div class="summary-icon">
-                    ✅
-                </div>
-
-                <div>
-
-                    <strong>
-                        Sua escolha
-                    </strong>
-
-                    <p id="summaryText">
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =====================================
-             ÁREA DE ESTUDOS
-        ====================================== -->
-
-        <section
-            id="studyArea"
-            class="study-area"
-            style="display:none;"
-        >
-        </section>
-
-
-
-        <!-- =====================================
-             RECURSOS
-        ====================================== -->
-
-        <section class="features">
-
-            <div class="section-title">
-
-                <span>
-                    🚀
-                </span>
-
-                <div>
-
-                    <h2>
-                        Recursos da plataforma
-                    </h2>
-
-                    <p>
-                        Ferramentas para ajudar nos estudos.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="feature-grid">
-
-                <article class="feature-card">
-
-                    <div class="feature-icon">
-                        📝
-                    </div>
-
-                    <h3>
-                        Questões
-                    </h3>
-
-                    <p>
-                        Resolva exercícios de acordo
-                        com sua série e matéria.
-                    </p>
-
-                </article>
-
-
-                <article class="feature-card">
-
-                    <div class="feature-icon">
-                        📖
-                    </div>
-
-                    <h3>
-                        Conteúdos
-                    </h3>
-
-                    <p>
-                        Estude explicações organizadas
-                        por matéria e nível.
-                    </p>
-
-                </article>
-
-
-                <article class="feature-card">
-
-                    <div class="feature-icon">
-                        💡
-                    </div>
-
-                    <h3>
-                        Exemplos
-                    </h3>
-
-                    <p>
-                        Veja exemplos explicados
-                        passo a passo.
-                    </p>
-
-                </article>
-
-
-                <article class="feature-card">
-
-                    <div class="feature-icon">
-                        🎯
-                    </div>
-
-                    <h3>
-                        Simulados
-                    </h3>
-
-                    <p>
-                        Teste seus conhecimentos e
-                        acompanhe seu desempenho.
-                    </p>
-
-                </article>
-
-
-                <article class="feature-card">
-
-                    <div class="feature-icon">
-                        📊
-                    </div>
-
-                    <h3>
-                        Resultados
-                    </h3>
-
-                    <p>
-                        Acompanhe acertos, erros e
-                        porcentagens.
-                    </p>
-
-                </article>
-
-
-                <article class="feature-card">
-
-                    <div class="feature-icon">
-                        ✍️
-                    </div>
-
-                    <h3>
-                        Redação
-                    </h3>
-
-                    <p>
-                        Pratique redação dentro da
-                        área de Língua Portuguesa.
-                    </p>
-
-                </article>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =====================================
-             COMO FUNCIONA
-        ====================================== -->
-
-        <section class="how-it-works">
-
-            <div class="section-title">
-
-                <span>
-                    ⚙️
-                </span>
-
-                <div>
-
-                    <h2>
-                        Como funciona?
-                    </h2>
-
-                    <p>
-                        É simples começar.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="steps-grid">
-
-                <div class="how-step">
-
-                    <span>
-                        01
-                    </span>
-
-                    <h3>
-                        Escolha o nível
-                    </h3>
-
-                    <p>
-                        Fundamental ou Médio.
-                    </p>
-
-                </div>
-
-
-                <div class="how-step">
-
-                    <span>
-                        02
-                    </span>
-
-                    <h3>
-                        Escolha a série
-                    </h3>
-
-                    <p>
-                        Selecione seu ano escolar.
-                    </p>
-
-                </div>
-
-
-                <div class="how-step">
-
-                    <span>
-                        03
-                    </span>
-
-                    <h3>
-                        Escolha a matéria
-                    </h3>
-
-                    <p>
-                        Estude somente o conteúdo
-                        que escolheu.
-                    </p>
-
-                </div>
-
-
-                <div class="how-step">
-
-                    <span>
-                        04
-                    </span>
-
-                    <h3>
-                        Comece
-                    </h3>
-
-                    <p>
-                        Resolva questões e acompanhe
-                        seu desempenho.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =====================================
-             AVISO
-        ====================================== -->
-
-        <section class="info-box">
-
-            <div class="info-icon">
-                💡
-            </div>
-
-            <div>
-
-                <h3>
-                    Estude do seu jeito
-                </h3>
-
-                <p>
-                    O sistema foi organizado para evitar
-                    que conteúdos de diferentes séries e
-                    matérias sejam misturados.
-                </p>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-
-    <!-- =========================================
-         RODAPÉ
-    ========================================== -->
-
-    <footer class="footer">
-
-        <div class="footer-content">
-
-            <div>
-
-                <h3>
-                    📚 Prova Paraná
-                </h3>
-
-                <p>
-                    Guia do Estudante
-                </p>
-
-            </div>
-
-
-            <div class="footer-links">
-
-                <a href="index.html">
-                    Início
-                </a>
-
-                <a href="disciplinas.html">
-                    Disciplinas
-                </a>
-
-                <a href="resultados.html">
-                    Resultados
-                </a>
-
-                <a href="sobre.html">
-                    Sobre
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <div class="footer-bottom">
-
-            <p>
-                © 2026 Prova Paraná — Guia do Estudante
-            </p>
-
-        </div>
-
-    </footer>
-
-
-
-    <!-- =========================================
-         SCRIPT
-    ========================================== -->
-
-    <script src="script.js"></script>
+<script src="script.js"></script>
+<script src="resultados.js"></script>
+<script src="questoes.js"></script>
+<script src="conteudos.js"></script>
+<script src="exemplos.js"></script>
+<script src="redacao.js"></script>
+<script src="simulados.js"></script>
 
 </body>
-
-    </html>
+</html>
