@@ -1,69 +1,286 @@
-# 📚 Prova Paraná — Guia do Estudante
+const CHAVE_RESULTADOS =
+    "provaParanaResultados";
 
-Site independente para estudantes.
 
-## Arquivos
+function obterResultadosSalvos() {
 
-- index.html
-- disciplinas.html
-- exercicios.html
-- objetivos.html
-- dicas.html
-- resultados.html
-- sobre.html
-- script.js
-- style.css
-- README.md
-- cartaz_prova_parana.png
+    try {
 
-## Recursos
+        return JSON.parse(
+            localStorage.getItem(CHAVE_RESULTADOS)
+        ) || [];
 
-O site possui:
+    } catch (erro) {
 
-- Página inicial
-- Navegação entre páginas
-- Disciplinas
-- Exercícios interativos
-- Correção automática
-- Pontuação
-- Porcentagem de acertos
-- Página de resultados
-- Dicas de estudo
-- Objetivos
-- Página sobre
-- Menu para celular
+        return [];
 
-## Exercícios
+    }
+}
 
-A página exercicios.html possui questões de múltipla escolha.
 
-O JavaScript calcula automaticamente:
+function salvarResultado(resultado) {
 
-- quantidade de acertos
-- quantidade total
-- porcentagem
-- mensagem de desempenho
+    const resultados =
+        obterResultadosSalvos();
 
-O último resultado é salvo no navegador usando localStorage.
+    resultados.unshift(resultado);
 
-## GitHub Pages
+    localStorage.setItem(
+        CHAVE_RESULTADOS,
+        JSON.stringify(resultados)
+    );
+}
 
-Depois de colocar todos os arquivos no repositório:
 
-1. Abra Settings.
-2. Entre em Pages.
-3. Escolha Deploy from a branch.
-4. Selecione a branch principal.
-5. Selecione /root.
-6. Salve.
-7. Aguarde a publicação.
+function registrarResultadoAtual(
+    acertos,
+    erros,
+    total
+) {
 
-## Imagem
+    const resultado = {
 
-O arquivo:
+        data: new Date().toLocaleString("pt-BR"),
 
-cartaz_prova_parana.png
+        nivel:
+            typeof nivelEscolhido !== "undefined"
+                ? nivelEscolhido
+                : "",
 
-deve ficar na mesma pasta dos arquivos HTML.
+        serie:
+            typeof serieEscolhida !== "undefined"
+                ? serieEscolhida
+                : "",
 
-Este projeto é independente e não substitui as informações oficiais da Secretaria da Educação.
+        materia:
+            typeof materiaEscolhida !== "undefined"
+                ? materiaEscolhida
+                : "",
+
+        atividade:
+            typeof atividadeEscolhida !== "undefined"
+                ? atividadeEscolhida
+                : "",
+
+        acertos: acertos,
+
+        erros: erros,
+
+        total: total,
+
+        porcentagem:
+            total > 0
+                ? Math.round((acertos / total) * 100)
+                : 0
+    };
+
+
+    salvarResultado(resultado);
+}
+
+
+function calcularEstatisticas() {
+
+    const resultados =
+        obterResultadosSalvos();
+
+
+    let totalQuestoes = 0;
+    let totalAcertos = 0;
+    let totalErros = 0;
+
+
+    resultados.forEach(resultado => {
+
+        totalQuestoes +=
+            Number(resultado.total) || 0;
+
+        totalAcertos +=
+            Number(resultado.acertos) || 0;
+
+        totalErros +=
+            Number(resultado.erros) || 0;
+
+    });
+
+
+    const porcentagem =
+        totalQuestoes > 0
+            ? Math.round(
+                (totalAcertos / totalQuestoes) * 100
+            )
+            : 0;
+
+
+    return {
+
+        atividades: resultados.length,
+
+        questoes: totalQuestoes,
+
+        acertos: totalAcertos,
+
+        erros: totalErros,
+
+        porcentagem: porcentagem
+
+    };
+}
+
+
+function mostrarResultados() {
+
+    const estatisticas =
+        document.getElementById("estatisticas");
+
+    const historico =
+        document.getElementById("historico");
+
+
+    if (!estatisticas || !historico) {
+        return;
+    }
+
+
+    const resultados =
+        obterResultadosSalvos();
+
+    const dados =
+        calcularEstatisticas();
+
+
+    estatisticas.innerHTML = `
+
+        <div class="resultado-card">
+
+            <strong>
+                ${dados.atividades}
+            </strong>
+
+            <span>
+                Atividades
+            </span>
+
+        </div>
+
+
+        <div class="resultado-card">
+
+            <strong>
+                ${dados.acertos}
+            </strong>
+
+            <span>
+                Acertos
+            </span>
+
+        </div>
+
+
+        <div class="resultado-card">
+
+            <strong>
+                ${dados.porcentagem}%
+            </strong>
+
+            <span>
+                Aproveitamento
+            </span>
+
+        </div>
+
+    `;
+
+
+    if (resultados.length === 0) {
+
+        historico.innerHTML = `
+
+            <div class="historico-item">
+
+                <h3>📊 Ainda não há resultados</h3>
+
+                <p>
+                    Faça algumas questões ou simulados
+                    para seus resultados aparecerem aqui.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    historico.innerHTML = `
+
+        <h2>Histórico</h2>
+
+        ${resultados.map(resultado => `
+
+            <div class="historico-item">
+
+                <strong>
+                    ${resultado.materia || "Disciplina"}
+                </strong>
+
+                <p>
+                    ${resultado.atividade || "Atividade"}
+                    —
+                    ${resultado.serie
+                        ? resultado.serie + "º ano"
+                        : ""}
+                </p>
+
+                <p>
+                    ${resultado.acertos}
+                    acertos de
+                    ${resultado.total}
+                </p>
+
+                <p>
+                    Aproveitamento:
+                    <strong>
+                        ${resultado.porcentagem}%
+                    </strong>
+                </p>
+
+                <small>
+                    ${resultado.data}
+                </small>
+
+            </div>
+
+        `).join("")}
+
+    `;
+}
+
+
+function limparResultados() {
+
+    const confirmar =
+        confirm(
+            "Tem certeza que deseja apagar todo o histórico?"
+        );
+
+
+    if (!confirmar) {
+        return;
+    }
+
+
+    localStorage.removeItem(
+        CHAVE_RESULTADOS
+    );
+
+
+    mostrarResultados();
+}
+
+
+document.addEventListener(
+    "DOMContentLoaded",
+    mostrarResultados
+);
