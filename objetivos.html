@@ -1,180 +1,95 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+function abrirExemplos() {
 
-<head>
+    let html = "";
 
-    <meta charset="UTF-8">
+    if (materiaIdEscolhida === "matematica") {
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+        html = `
+            <h2>💡 Exemplo resolvido — Matemática</h2>
 
-    <title>Objetivos | Prova Paraná</title>
+            <h3>Porcentagem</h3>
 
-    <link rel="stylesheet" href="style.css">
+            <p>
+                Quanto é 20% de 150?
+            </p>
 
-</head>
+            <div class="exemplo-passo">
+                <strong>Passo 1:</strong>
+                Transforme 20% em decimal: 0,20.
+            </div>
 
-<body>
+            <div class="exemplo-passo">
+                <strong>Passo 2:</strong>
+                Multiplique 150 × 0,20.
+            </div>
 
-<header>
+            <div class="exemplo-passo">
+                <strong>Passo 3:</strong>
+                150 × 0,20 = 30.
+            </div>
 
-    <a href="index.html" class="logo">
-        📚 Prova Paraná
-    </a>
+            <p><strong>Resposta: 30.</strong></p>
 
-    <button class="menu-btn" onclick="toggleMenu()">
-        ☰
-    </button>
+            <h3>Equação</h3>
 
-    <nav id="menu">
+            <p>2x + 4 = 12</p>
 
-        <a href="index.html">Início</a>
-        <a href="disciplinas.html">Disciplinas</a>
-        <a href="exercicios.html">Exercícios</a>
-        <a href="objetivos.html">Objetivos</a>
-        <a href="dicas.html">Dicas</a>
-        <a href="resultados.html">Resultados</a>
-        <a href="sobre.html">Sobre</a>
+            <div class="exemplo-passo">
+                2x = 12 - 4
+            </div>
 
-    </nav>
+            <div class="exemplo-passo">
+                2x = 8
+            </div>
 
-</header>
+            <div class="exemplo-passo">
+                x = 4
+            </div>
+        `;
 
+    } else {
 
-<main>
+        html = `
+            <h2>💡 Exemplo resolvido</h2>
 
-<section class="page-header">
+            <p>
+                Disciplina: <strong>${materiaEscolhida}</strong>
+            </p>
 
-    <span class="tag">
-        ENTENDA
-    </span>
+            <p>
+                Série: <strong>${serieEscolhida}º ano</strong>
+            </p>
 
-    <h1>
-        Objetivos
-    </h1>
+            <div class="exemplo-passo">
+                <strong>Passo 1:</strong>
+                Leia atentamente o enunciado.
+            </div>
 
-    <p>
-        Conheça alguns dos objetivos de uma avaliação
-        educacional.
-    </p>
+            <div class="exemplo-passo">
+                <strong>Passo 2:</strong>
+                Identifique as informações principais.
+            </div>
 
-</section>
+            <div class="exemplo-passo">
+                <strong>Passo 3:</strong>
+                Relacione as informações com o conteúdo estudado.
+            </div>
 
+            <div class="exemplo-passo">
+                <strong>Passo 4:</strong>
+                Confira sua resposta.
+            </div>
+        `;
+    }
 
-<section class="cards">
 
+    document.getElementById("areaEstudo").innerHTML = `
+        <div class="exemplo-box">
+            ${html}
+        </div>
+    `;
 
-<article class="card">
-
-    <div class="icon">
-        🎯
-    </div>
-
-    <h3>
-        Diagnóstico
-    </h3>
-
-    <p>
-        Identificar pontos fortes e dificuldades
-        na aprendizagem.
-    </p>
-
-</article>
-
-
-<article class="card">
-
-    <div class="icon">
-        📈
-    </div>
-
-    <h3>
-        Acompanhamento
-    </h3>
-
-    <p>
-        Observar a evolução dos estudantes
-        ao longo do tempo.
-    </p>
-
-</article>
-
-
-<article class="card">
-
-    <div class="icon">
-        🏫
-    </div>
-
-    <h3>
-        Planejamento
-    </h3>
-
-    <p>
-        Ajudar escolas e professores a planejar
-        suas atividades.
-    </p>
-
-</article>
-
-
-<article class="card">
-
-    <div class="icon">
-        🤝
-    </div>
-
-    <h3>
-        Melhoria
-    </h3>
-
-    <p>
-        Identificar conteúdos que podem
-        receber mais atenção.
-    </p>
-
-</article>
-
-
-</section>
-
-
-<section class="wide">
-
-    <h2>
-        Por que fazer a avaliação?
-    </h2>
-
-    <p>
-        Avaliações podem ajudar a compreender
-        o processo de aprendizagem e indicar
-        quais conteúdos precisam ser reforçados.
-    </p>
-
-</section>
-
-
-</main>
-
-
-<footer>
-
-    <strong>
-        📚 Prova Paraná
-    </strong>
-
-    <p>
-        Guia independente para estudantes.
-    </p>
-
-    <p class="copyright">
-        © 2026 Prova Paraná
-    </p>
-
-</footer>
-
-
-<script src="script.js"></script>
-
-</body>
-</html>
+    document.getElementById("areaEstudo").scrollIntoView({
+        behavior: "smooth"
+    });
+}
