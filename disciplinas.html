@@ -1,252 +1,168 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+let simuladoQuestoes = [];
+let simuladoIndice = 0;
+let simuladoAcertos = 0;
 
-<head>
 
-    <meta charset="UTF-8">
+function abrirSimulado() {
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    simuladoQuestoes = criarQuestoes();
 
-    <title>Disciplinas | Prova Paraná</title>
+    if (simuladoQuestoes.length > 5) {
+        simuladoQuestoes = simuladoQuestoes.slice(0, 5);
+    }
 
-    <link rel="stylesheet" href="style.css">
+    simuladoIndice = 0;
+    simuladoAcertos = 0;
 
-</head>
+    document.getElementById("areaEstudo").innerHTML = `
 
-<body>
+        <div class="area-atividade">
 
-<header>
+            <h2>🎯 Simulado</h2>
 
-    <a href="index.html" class="logo">
-        📚 Prova Paraná
-    </a>
+            <p>
+                ${materiaEscolhida} —
+                ${serieEscolhida}º ano
+            </p>
 
-    <button class="menu-btn" onclick="toggleMenu()">
-        ☰
-    </button>
+            <div id="simuladoContainer"></div>
 
-    <nav id="menu">
+        </div>
 
-        <a href="index.html">Início</a>
+    `;
 
-        <a href="disciplinas.html">Disciplinas</a>
+    mostrarQuestaoSimulado();
 
-        <a href="exercicios.html">Exercícios</a>
+    document.getElementById("areaEstudo").scrollIntoView({
+        behavior: "smooth"
+    });
+}
 
-        <a href="objetivos.html">Objetivos</a>
 
-        <a href="dicas.html">Dicas</a>
+function mostrarQuestaoSimulado() {
 
-        <a href="resultados.html">Resultados</a>
+    const container =
+        document.getElementById("simuladoContainer");
 
-        <a href="sobre.html">Sobre</a>
+    if (!container) return;
 
-    </nav>
 
-</header>
+    if (simuladoIndice >= simuladoQuestoes.length) {
 
+        finalizarSimulado();
 
-<main>
+        return;
+    }
 
-<section class="page-header">
 
-    <span class="tag">
-        CONTEÚDOS
-    </span>
+    const q = simuladoQuestoes[simuladoIndice];
 
-    <h1>
-        Disciplinas
-    </h1>
 
-    <p>
-        Escolha uma área para conhecer os principais
-        conteúdos e depois pratique nos exercícios.
-    </p>
+    container.innerHTML = `
 
-</section>
+        <div class="questao">
 
+            <h3>
+                Questão ${simuladoIndice + 1}
+                de ${simuladoQuestoes.length}
+            </h3>
 
-<section class="cards">
+            <p>${q.pergunta}</p>
 
+            <div class="alternativas">
 
-<article class="card">
+                ${q.alternativas.map((alt, index) => `
 
-    <div class="icon">
-        📘
-    </div>
+                    <button
+                        class="alternativa"
+                        onclick="responderSimulado(${index})">
 
-    <h3>
-        Língua Portuguesa
-    </h3>
+                        ${String.fromCharCode(65 + index)})
+                        ${alt}
 
-    <p>
-        Leitura, interpretação de textos,
-        gêneros textuais e gramática.
-    </p>
+                    </button>
 
-    <a href="exercicios.html">
-        Fazer exercícios →
-    </a>
+                `).join("")}
 
-</article>
+            </div>
 
+        </div>
 
-<article class="card">
+    `;
+}
 
-    <div class="icon">
-        ➗
-    </div>
 
-    <h3>
-        Matemática
-    </h3>
+function responderSimulado(resposta) {
 
-    <p>
-        Operações, porcentagem, geometria,
-        álgebra e resolução de problemas.
-    </p>
+    const q = simuladoQuestoes[simuladoIndice];
 
-    <a href="exercicios.html">
-        Fazer exercícios →
-    </a>
+    if (resposta === q.correta) {
+        simuladoAcertos++;
+    }
 
-</article>
+    simuladoIndice++;
 
+    mostrarQuestaoSimulado();
+}
 
-<article class="card">
 
-    <div class="icon">
-        🔬
-    </div>
+function finalizarSimulado() {
 
-    <h3>
-        Ciências
-    </h3>
+    const total = simuladoQuestoes.length;
+    const erros = total - simuladoAcertos;
+    const porcentagem =
+        Math.round((simuladoAcertos / total) * 100);
 
-    <p>
-        Natureza, ambiente, saúde,
-        matéria e energia.
-    </p>
 
-    <a href="exercicios.html">
-        Fazer exercícios →
-    </a>
+    if (typeof registrarResultadoAtual === "function") {
 
-</article>
+        registrarResultadoAtual(
+            simuladoAcertos,
+            erros,
+            total
+        );
 
+    }
 
-<article class="card">
 
-    <div class="icon">
-        🌎
-    </div>
+    document.getElementById("simuladoContainer").innerHTML = `
 
-    <h3>
-        Geografia
-    </h3>
+        <div class="resultado-final">
 
-    <p>
-        Espaço geográfico, território,
-        população e meio ambiente.
-    </p>
+            <h2>🏆 Simulado concluído!</h2>
 
-    <a href="exercicios.html">
-        Fazer exercícios →
-    </a>
+            <p>
+                Acertos:
+                <strong>${simuladoAcertos}</strong>
+            </p>
 
-</article>
+            <p>
+                Erros:
+                <strong>${erros}</strong>
+            </p>
 
+            <p>
+                Aproveitamento:
+                <strong>${porcentagem}%</strong>
+            </p>
 
-<article class="card">
+            <button
+                class="botao-atividade"
+                onclick="abrirSimulado()">
 
-    <div class="icon">
-        🏛️
-    </div>
+                Fazer novamente
 
-    <h3>
-        História
-    </h3>
+            </button>
 
-    <p>
-        Acontecimentos históricos,
-        sociedade, cultura e política.
-    </p>
+            <a
+                class="botao-atividade"
+                href="resultados.html">
 
-    <a href="exercicios.html">
-        Fazer exercícios →
-    </a>
+                Ver resultados
 
-</article>
+            </a>
 
+        </div>
 
-<article class="card">
-
-    <div class="icon">
-        🌐
-    </div>
-
-    <h3>
-        Língua Inglesa
-    </h3>
-
-    <p>
-        Leitura, interpretação,
-        vocabulário e compreensão.
-    </p>
-
-    <a href="exercicios.html">
-        Fazer exercícios →
-    </a>
-
-</article>
-
-
-</section>
-
-
-<section class="highlight">
-
-    <div>
-
-        <h2>
-            📝 Quer praticar?
-        </h2>
-
-        <p>
-            Vá para a área de exercícios e responda
-            às questões diretamente no site.
-        </p>
-
-    </div>
-
-    <a href="exercicios.html" class="btn">
-        Fazer exercícios
-    </a>
-
-</section>
-
-</main>
-
-
-<footer>
-
-    <strong>
-        📚 Prova Paraná
-    </strong>
-
-    <p>
-        Guia independente para estudantes.
-    </p>
-
-    <p class="copyright">
-        © 2026 Prova Paraná
-    </p>
-
-</footer>
-
-
-<script src="script.js"></script>
-
-</body>
-</html>
+    `;
+}
