@@ -1,114 +1,483 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+/* =====================================================
+   PROVA PARANÁ — SISTEMA DE RESULTADOS
+===================================================== */
 
-<head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>Resultados | Prova Paraná</title>
-
-    <link rel="stylesheet" href="style.css">
-
-</head>
-
-<body>
-
-<header>
-
-    <a href="index.html" class="logo">
-        📚 Prova Paraná
-    </a>
-
-    <button class="menu-btn" onclick="toggleMenu()">
-        ☰
-    </button>
-
-    <nav id="menu">
-
-        <a href="index.html">Início</a>
-        <a href="disciplinas.html">Disciplinas</a>
-        <a href="exercicios.html">Exercícios</a>
-        <a href="objetivos.html">Objetivos</a>
-        <a href="dicas.html">Dicas</a>
-        <a href="resultados.html">Resultados</a>
-        <a href="sobre.html">Sobre</a>
-
-    </nav>
-
-</header>
+const CHAVE_RESULTADOS = "provaParanaResultados";
 
 
-<main>
+/* =====================================================
+   PEGAR RESULTADOS SALVOS
+===================================================== */
 
-<section class="page-header">
+function obterResultadosSalvos() {
 
-    <span class="tag">
-        DESEMPENHO
-    </span>
+    try {
 
-    <h1>
-        Resultados
-    </h1>
+        const dados =
+            localStorage.getItem(
+                CHAVE_RESULTADOS
+            );
 
-    <p>
-        Veja a pontuação obtida no último exercício
-        realizado neste navegador.
-    </p>
+        if (!dados) {
+            return [];
+        }
 
-</section>
+        return JSON.parse(dados);
 
+    } catch (erro) {
 
-<section class="wide result-page">
+        console.error(
+            "Erro ao carregar resultados:",
+            erro
+        );
 
-    <div class="result-icon">
-        📊
-    </div>
-
-    <h2>
-        Seu último resultado
-    </h2>
-
-    <div id="ultimoResultado">
-
-        Você ainda não realizou nenhum exercício.
-
-    </div>
+        return [];
+    }
+}
 
 
-    <a href="exercicios.html"
-       class="btn">
+/* =====================================================
+   SALVAR RESULTADO
+===================================================== */
 
-        Fazer exercícios
+function salvarResultado(resultado) {
 
-    </a>
+    const resultados =
+        obterResultadosSalvos();
 
-</section>
+    resultados.push({
+
+        nivel:
+            resultado.nivel || "",
+
+        serie:
+            resultado.serie || "",
+
+        materia:
+            resultado.materia || "",
+
+        atividade:
+            resultado.atividade || "Questões",
+
+        acertos:
+            Number(resultado.acertos) || 0,
+
+        erros:
+            Number(resultado.erros) || 0,
+
+        total:
+            Number(resultado.total) || 0,
+
+        porcentagem:
+            Number(resultado.porcentagem) || 0,
+
+        data:
+            new Date().toLocaleString(
+                "pt-BR"
+            )
+
+    });
 
 
-</main>
+    localStorage.setItem(
+        CHAVE_RESULTADOS,
+        JSON.stringify(resultados)
+    );
+}
 
 
-<footer>
+/* =====================================================
+   CALCULAR ESTATÍSTICAS
+===================================================== */
 
-    <strong>
-        📚 Prova Paraná
-    </strong>
+function calcularEstatisticas() {
 
-    <p>
-        Guia independente para estudantes.
-    </p>
-
-    <p class="copyright">
-        © 2026 Prova Paraná
-    </p>
-
-</footer>
+    const resultados =
+        obterResultadosSalvos();
 
 
-<script src="script.js"></script>
+    let totalQuestoes = 0;
+    let totalAcertos = 0;
+    let totalErros = 0;
 
-</body>
-</html>
+
+    resultados.forEach(resultado => {
+
+        totalQuestoes +=
+            Number(resultado.total) || 0;
+
+        totalAcertos +=
+            Number(resultado.acertos) || 0;
+
+        totalErros +=
+            Number(resultado.erros) || 0;
+
+    });
+
+
+    const porcentagem =
+        totalQuestoes > 0
+            ? Math.round(
+                (totalAcertos /
+                totalQuestoes) * 100
+            )
+            : 0;
+
+
+    return {
+
+        totalQuestoes,
+
+        totalAcertos,
+
+        totalErros,
+
+        porcentagem
+
+    };
+}
+
+
+/* =====================================================
+   MOSTRAR RESULTADOS
+===================================================== */
+
+function mostrarResultados() {
+
+    const area =
+        document.getElementById(
+            "resultadosArea"
+        );
+
+
+    if (!area) {
+        return;
+    }
+
+
+    const estatisticas =
+        calcularEstatisticas();
+
+
+    const resultados =
+        obterResultadosSalvos();
+
+
+    if (resultados.length === 0) {
+
+        area.innerHTML = `
+
+            <div class="study-area">
+
+                <div class="wide">
+
+                    <div class="icon">
+                        📊
+                    </div>
+
+                    <h2>
+                        Seus resultados
+                    </h2>
+
+                    <p>
+                        Você ainda não realizou
+                        nenhuma atividade.
+                    </p>
+
+                    <p>
+                        Faça questões para começar
+                        a registrar seu desempenho.
+                    </p>
+
+                </div>
+
+            </div>
+
+        `;
+
+        return;
+    }
+
+
+    let historicoHTML = "";
+
+
+    resultados
+        .slice()
+        .reverse()
+        .forEach(resultado => {
+
+            const nivel =
+                resultado.nivel === "fundamental"
+                    ? "Ensino Fundamental"
+                    : "Ensino Médio";
+
+
+            historicoHTML += `
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        📝
+                    </div>
+
+                    <h3>
+                        ${resultado.materia}
+                    </h3>
+
+                    <p>
+                        ${nivel}
+                        — ${resultado.serie}
+                    </p>
+
+                    <p>
+                        <strong>
+                            Atividade:
+                        </strong>
+                        ${resultado.atividade}
+                    </p>
+
+                    <p>
+                        ✅ Acertos:
+                        ${resultado.acertos}
+                    </p>
+
+                    <p>
+                        ❌ Erros:
+                        ${resultado.erros}
+                    </p>
+
+                    <p>
+                        📊 Aproveitamento:
+                        ${resultado.porcentagem}%
+                    </p>
+
+                    <small>
+                        ${resultado.data}
+                    </small>
+
+                </div>
+
+            `;
+
+        });
+
+
+    area.innerHTML = `
+
+        <section class="study-area">
+
+            <div class="wide">
+
+                <div class="icon">
+                    📊
+                </div>
+
+                <h2>
+                    Seus resultados
+                </h2>
+
+                <p>
+                    Aqui você pode acompanhar
+                    seu desempenho nos estudos.
+                </p>
+
+
+                <div class="feature-grid">
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            📝
+                        </div>
+
+                        <h3>
+                            Questões respondidas
+                        </h3>
+
+                        <p>
+                            ${estatisticas.totalQuestoes}
+                        </p>
+
+                    </div>
+
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            ✅
+                        </div>
+
+                        <h3>
+                            Acertos
+                        </h3>
+
+                        <p>
+                            ${estatisticas.totalAcertos}
+                        </p>
+
+                    </div>
+
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            ❌
+                        </div>
+
+                        <h3>
+                            Erros
+                        </h3>
+
+                        <p>
+                            ${estatisticas.totalErros}
+                        </p>
+
+                    </div>
+
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            📈
+                        </div>
+
+                        <h3>
+                            Aproveitamento
+                        </h3>
+
+                        <p>
+                            ${estatisticas.porcentagem}%
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <br>
+
+
+                <h3>
+                    Histórico
+                </h3>
+
+
+                <div class="feature-grid">
+
+                    ${historicoHTML}
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="selection-card"
+                    style="
+                        margin-top:25px;
+                        min-height:70px;
+                    "
+                    onclick="limparResultados()"
+                >
+
+                    🗑️
+                    Limpar histórico
+
+                </button>
+
+            </div>
+
+        </section>
+
+    `;
+}
+
+
+/* =====================================================
+   LIMPAR RESULTADOS
+===================================================== */
+
+function limparResultados() {
+
+    const confirmar =
+        confirm(
+            "Tem certeza que deseja apagar todo o histórico?"
+        );
+
+
+    if (!confirmar) {
+        return;
+    }
+
+
+    localStorage.removeItem(
+        CHAVE_RESULTADOS
+    );
+
+
+    mostrarResultados();
+
+}
+
+
+/* =====================================================
+   REGISTRAR RESULTADO DA ATIVIDADE
+===================================================== */
+
+function registrarResultadoAtual(
+    acertos,
+    erros,
+    total
+) {
+
+    const porcentagem =
+        total > 0
+            ? Math.round(
+                (acertos / total) * 100
+            )
+            : 0;
+
+
+    salvarResultado({
+
+        nivel:
+            nivelEscolhido,
+
+        serie:
+            serieEscolhida,
+
+        materia:
+            materiaEscolhida,
+
+        atividade:
+            atividadeEscolhida,
+
+        acertos:
+            acertos,
+
+        erros:
+            erros,
+
+        total:
+            total,
+
+        porcentagem:
+            porcentagem
+
+    });
+
+}
+
+
+/* =====================================================
+   CARREGAR RESULTADOS AO ABRIR A PÁGINA
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        mostrarResultados();
+
+    }
+);
