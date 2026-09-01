@@ -1,912 +1,116 @@
-/* =====================================================
-   PROVA PARANÁ — BANCO DE QUESTÕES
-===================================================== */
+function abrirRedacao() {
 
-const bancoQuestoes = {
+    if (materiaIdEscolhida !== "portugues") {
 
-    /* =================================================
-       ENSINO FUNDAMENTAL — 2º ANO — MATEMÁTICA
-    ================================================= */
+        alert("Redação está disponível somente em Português.");
 
-    fundamental: {
-
-        "2º ano": {
-
-            matematica: [
-
-                {
-                    pergunta: "Quanto é 25 + 13?",
-                    alternativas: [
-                        "38",
-                        "35",
-                        "48",
-                        "28"
-                    ],
-                    correta: 0,
-                    explicacao:
-                        "25 + 13 = 38. Somamos primeiro as unidades e depois as dezenas."
-                },
-
-                {
-                    pergunta: "Quanto é 50 - 20?",
-                    alternativas: [
-                        "20",
-                        "30",
-                        "40",
-                        "70"
-                    ],
-                    correta: 1,
-                    explicacao:
-                        "50 - 20 = 30."
-                },
-
-                {
-                    pergunta: "Quanto é 4 × 3?",
-                    alternativas: [
-                        "7",
-                        "10",
-                        "12",
-                        "14"
-                    ],
-                    correta: 2,
-                    explicacao:
-                        "4 × 3 significa somar 4 três vezes: 4 + 4 + 4 = 12."
-                },
-
-                {
-                    pergunta: "Quanto é 12 ÷ 3?",
-                    alternativas: [
-                        "3",
-                        "4",
-                        "5",
-                        "6"
-                    ],
-                    correta: 1,
-                    explicacao:
-                        "12 dividido por 3 é igual a 4."
-                },
-
-                {
-                    pergunta: "Qual número vem depois de 99?",
-                    alternativas: [
-                        "98",
-                        "100",
-                        "101",
-                        "90"
-                    ],
-                    correta: 1,
-                    explicacao:
-                        "Depois de 99 vem o número 100."
-                }
-
-            ],
-
-            portugues: [
-
-                {
-                    pergunta:
-                        "Qual palavra está escrita corretamente?",
-
-                    alternativas: [
-                        "Casa",
-                        "Caza",
-                        "Kaza",
-                        "Cassa"
-                    ],
-
-                    correta: 0,
-
-                    explicacao:
-                        "A forma correta é 'casa'."
-                },
-
-                {
-                    pergunta:
-                        "Qual destas palavras é um animal?",
-
-                    alternativas: [
-                        "Mesa",
-                        "Cachorro",
-                        "Caderno",
-                        "Escola"
-                    ],
-
-                    correta: 1,
-
-                    explicacao:
-                        "Cachorro é o nome de um animal."
-                },
-
-                {
-                    pergunta:
-                        "Qual é o plural de 'bola'?",
-
-                    alternativas: [
-                        "Bolas",
-                        "Bolaes",
-                        "Bolam",
-                        "Boles"
-                    ],
-
-                    correta: 0,
-
-                    explicacao:
-                        "O plural de bola é bolas."
-                }
-
-            ],
-
-            ciencias: [
-
-                {
-                    pergunta:
-                        "Qual destes é necessário para os seres humanos respirarem?",
-
-                    alternativas: [
-                        "Oxigênio",
-                        "Areia",
-                        "Pedra",
-                        "Plástico"
-                    ],
-
-                    correta: 0,
-
-                    explicacao:
-                        "O oxigênio do ar é utilizado na respiração."
-                },
-
-                {
-                    pergunta:
-                        "Qual destes é um ser vivo?",
-
-                    alternativas: [
-                        "Pedra",
-                        "Cadeira",
-                        "Árvore",
-                        "Copo"
-                    ],
-
-                    correta: 2,
-
-                    explicacao:
-                        "A árvore é um ser vivo."
-                }
-
-            ]
-
-        }
-
-    },
-
-
-    /* =================================================
-       ENSINO FUNDAMENTAL — 3º ANO
-    ================================================= */
-
-    fundamental3: {
-
-        matematica: [
-
-            {
-                pergunta:
-                    "Quanto é 125 + 75?",
-
-                alternativas: [
-                    "180",
-                    "190",
-                    "200",
-                    "210"
-                ],
-
-                correta: 2,
-
-                explicacao:
-                    "125 + 75 = 200."
-            },
-
-            {
-                pergunta:
-                    "Quanto é 300 - 125?",
-
-                alternativas: [
-                    "165",
-                    "175",
-                    "185",
-                    "195"
-                ],
-
-                correta: 1,
-
-                explicacao:
-                    "300 - 125 = 175."
-            }
-
-        ],
-
-        portugues: [
-
-            {
-                pergunta:
-                    "Qual frase está escrita corretamente?",
-
-                alternativas: [
-                    "O menino foi à escola.",
-                    "O menino foi a escola.",
-                    "O menino foi há escola.",
-                    "O menino foi ah escola."
-                ],
-
-                correta: 0,
-
-                explicacao:
-                    "A frase correta é 'O menino foi à escola.'"
-            }
-
-        ]
-
-    },
-
-
-    /* =================================================
-       ENSINO MÉDIO — 1º ANO
-    ================================================= */
-
-    medio: {
-
-        "1º ano": {
-
-            matematica: [
-
-                {
-                    pergunta:
-                        "Qual é o resultado de 2² + 3²?",
-
-                    alternativas: [
-                        "10",
-                        "11",
-                        "12",
-                        "13"
-                    ],
-
-                    correta: 3,
-
-                    explicacao:
-                        "2² = 4 e 3² = 9. Portanto, 4 + 9 = 13."
-                },
-
-                {
-                    pergunta:
-                        "Qual é o resultado de 15 × 4?",
-
-                    alternativas: [
-                        "50",
-                        "55",
-                        "60",
-                        "65"
-                    ],
-
-                    correta: 2,
-
-                    explicacao:
-                        "15 × 4 = 60."
-                }
-
-            ],
-
-            portugues: [
-
-                {
-                    pergunta:
-                        "Qual é a principal finalidade de um texto argumentativo?",
-
-                    alternativas: [
-                        "Contar apenas uma história",
-                        "Defender uma ideia usando argumentos",
-                        "Apresentar somente números",
-                        "Ensinar uma receita"
-                    ],
-
-                    correta: 1,
-
-                    explicacao:
-                        "O texto argumentativo busca defender uma ideia por meio de argumentos."
-                }
-
-            ],
-
-            fisica: [
-
-                {
-                    pergunta:
-                        "Qual é a unidade de força no Sistema Internacional?",
-
-                    alternativas: [
-                        "Joule",
-                        "Watt",
-                        "Newton",
-                        "Pascal"
-                    ],
-
-                    correta: 2,
-
-                    explicacao:
-                        "A unidade de força no SI é o Newton (N)."
-                }
-
-            ],
-
-            quimica: [
-
-                {
-                    pergunta:
-                        "Qual é o símbolo químico do oxigênio?",
-
-                    alternativas: [
-                        "O",
-                        "Ox",
-                        "Og",
-                        "C"
-                    ],
-
-                    correta: 0,
-
-                    explicacao:
-                        "O símbolo químico do oxigênio é O."
-                }
-
-            ]
-
-        },
-
-
-        /* =============================================
-           ENSINO MÉDIO — 2º ANO
-        ============================================= */
-
-        "2º ano": {
-
-            matematica: [
-
-                {
-                    pergunta:
-                        "Qual é o resultado de 3² + 4²?",
-
-                    alternativas: [
-                        "12",
-                        "20",
-                        "25",
-                        "30"
-                    ],
-
-                    correta: 2,
-
-                    explicacao:
-                        "3² = 9 e 4² = 16. Então 9 + 16 = 25."
-                },
-
-                {
-                    pergunta:
-                        "Qual é o resultado de 20% de 200?",
-
-                    alternativas: [
-                        "20",
-                        "30",
-                        "40",
-                        "50"
-                    ],
-
-                    correta: 2,
-
-                    explicacao:
-                        "20% de 200 = 0,20 × 200 = 40."
-                }
-
-            ],
-
-            fisica: [
-
-                {
-                    pergunta:
-                        "Qual grandeza mede a quantidade de matéria de um corpo?",
-
-                    alternativas: [
-                        "Força",
-                        "Massa",
-                        "Velocidade",
-                        "Potência"
-                    ],
-
-                    correta: 1,
-
-                    explicacao:
-                        "A massa representa a quantidade de matéria de um corpo."
-                }
-
-            ],
-
-            quimica: [
-
-                {
-                    pergunta:
-                        "Qual partícula possui carga elétrica negativa?",
-
-                    alternativas: [
-                        "Próton",
-                        "Nêutron",
-                        "Elétron",
-                        "Núcleo"
-                    ],
-
-                    correta: 2,
-
-                    explicacao:
-                        "O elétron possui carga elétrica negativa."
-                }
-
-            ]
-
-        },
-
-
-        /* =============================================
-           ENSINO MÉDIO — 3º ANO
-        ============================================= */
-
-        "3º ano": {
-
-            matematica: [
-
-                {
-                    pergunta:
-                        "Qual é a derivada de x²?",
-
-                    alternativas: [
-                        "x",
-                        "2x",
-                        "x²",
-                        "2"
-                    ],
-
-                    correta: 1,
-
-                    explicacao:
-                        "A derivada de x² é 2x."
-                }
-
-            ],
-
-            fisica: [
-
-                {
-                    pergunta:
-                        "Qual é a unidade de energia no SI?",
-
-                    alternativas: [
-                        "Newton",
-                        "Joule",
-                        "Watt",
-                        "Volt"
-                    ],
-
-                    correta: 1,
-
-                    explicacao:
-                        "A unidade de energia no Sistema Internacional é o Joule (J)."
-                }
-
-            ]
-
-        }
-
-    }
-
-};
-
-
-/* =====================================================
-   PEGAR QUESTÕES
-===================================================== */
-
-function obterQuestoes() {
-
-    let nivel =
-        bancoQuestoes[nivelEscolhido];
-
-    if (!nivel) {
-        return [];
+        return;
     }
 
 
-    /*
-       Ensino Fundamental usa a estrutura:
-       fundamental → "2º ano" → matemática
-    */
+    document.getElementById("areaEstudo").innerHTML = `
 
-    if (
-        nivelEscolhido === "fundamental"
-    ) {
+        <div class="redacao-box">
 
-        const serie =
-            nivel[serieEscolhida];
+            <h2>✍️ Prática de Redação</h2>
 
-        if (!serie) {
+            <p>
+                Escreva um texto sobre o tema abaixo.
+            </p>
 
-            /*
-               Algumas questões podem estar
-               cadastradas nas estruturas antigas.
-            */
+            <h3>Tema</h3>
 
-            if (
-                serieEscolhida === "3º ano" &&
-                bancoQuestoes.fundamental3
-            ) {
+            <p>
+                <strong>
+                    A importância da tecnologia na educação.
+                </strong>
+            </p>
 
-                return bancoQuestoes
-                    .fundamental3
-                    [materiaIdEscolhida]
-                    || [];
+            <h3>Seu texto</h3>
 
-            }
+            <textarea
+                id="textoRedacao"
+                placeholder="Digite sua redação aqui...">
+            </textarea>
 
-            return [];
-        }
+            <button
+                class="botao-atividade"
+                onclick="analisarRedacao()">
 
+                Analisar texto
 
-        return serie[
-            materiaIdEscolhida
-        ] || [];
-    }
+            </button>
 
+            <div id="resultadoRedacao"></div>
 
-    /*
-       Ensino Médio
-    */
+        </div>
 
-    if (
-        nivelEscolhido === "medio"
-    ) {
+    `;
 
-        const serie =
-            nivel[serieEscolhida];
-
-        if (!serie) {
-            return [];
-        }
-
-        return serie[
-            materiaIdEscolhida
-        ] || [];
-    }
-
-
-    return [];
+    document.getElementById("areaEstudo").scrollIntoView({
+        behavior: "smooth"
+    });
 }
 
 
-/* =====================================================
-   INICIAR QUESTIONÁRIO
-===================================================== */
+function analisarRedacao() {
 
-function iniciarQuestionario() {
+    const texto = document.getElementById("textoRedacao").value.trim();
 
-    const questoes =
-        obterQuestoes();
+    if (!texto) {
 
-
-    if (questoes.length === 0) {
-
-        alert(
-            "Ainda não temos questões cadastradas para esta série e matéria."
-        );
+        alert("Escreva seu texto primeiro.");
 
         return;
     }
 
 
-    let indice = 0;
+    const palavras = texto.split(/\s+/).filter(Boolean).length;
+    const caracteres = texto.length;
+    const paragrafos = texto.split(/\n+/).filter(Boolean).length;
 
-    let acertos = 0;
+    let observacoes = [];
 
-    let respondidas = 0;
-
-
-    const area =
-        document.getElementById(
-            "studyArea"
-        );
-
-
-    if (!area) {
-        return;
+    if (palavras < 80) {
+        observacoes.push("Tente desenvolver mais suas ideias.");
+    } else {
+        observacoes.push("Seu texto possui uma boa quantidade de palavras.");
     }
 
-
-    function mostrarQuestao() {
-
-        const questao =
-            questoes[indice];
-
-
-        const porcentagem =
-            respondidas === 0
-                ? 0
-                : Math.round(
-                    (acertos / respondidas) * 100
-                );
-
-
-        area.innerHTML = `
-
-            <div class="wide">
-
-                <div class="icon">
-                    📝
-                </div>
-
-                <h2>
-                    Questão ${indice + 1}
-                    de ${questoes.length}
-                </h2>
-
-                <div class="selection-summary">
-
-                    <div class="summary-icon">
-                        📊
-                    </div>
-
-                    <div>
-
-                        <strong>
-                            Seu desempenho
-                        </strong>
-
-                        <p>
-                            Acertos:
-                            ${acertos}
-                            |
-                            Erros:
-                            ${respondidas - acertos}
-                            |
-                            ${porcentagem}%
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="feature-card">
-
-                    <h3>
-                        ${questao.pergunta}
-                    </h3>
-
-                </div>
-
-
-                <div
-                    id="alternativas"
-                    class="option-grid"
-                >
-
-                </div>
-
-
-                <div
-                    id="feedback"
-                    class="warning"
-                    style="display:none;"
-                >
-                </div>
-
-
-                <button
-                    id="proximaQuestao"
-                    type="button"
-                    class="selection-card"
-                    style="
-                        margin-top:20px;
-                        min-height:70px;
-                    "
-                    onclick="proximaQuestao()"
-                    disabled
-                >
-                    ➡️ Próxima questão
-                </button>
-
-            </div>
-
-        `;
-
-
-        const alternativas =
-            document.getElementById(
-                "alternativas"
-            );
-
-
-        questao.alternativas.forEach(
-            (alternativa, i) => {
-
-                const botao =
-                    document.createElement(
-                        "button"
-                    );
-
-                botao.type = "button";
-
-                botao.className =
-                    "selection-card";
-
-                botao.innerHTML = `
-                    <span>
-                        ${String.fromCharCode(65 + i)}
-                    </span>
-
-                    <strong>
-                        ${alternativa}
-                    </strong>
-                `;
-
-
-                botao.onclick =
-                    function() {
-
-                        responder(
-                            i,
-                            questao
-                        );
-
-                    };
-
-
-                alternativas.appendChild(
-                    botao
-                );
-
-            }
-        );
-
+    if (paragrafos < 2) {
+        observacoes.push("Tente organizar o texto em mais de um parágrafo.");
+    } else {
+        observacoes.push("Você utilizou mais de um parágrafo.");
     }
 
-
-    window.responder =
-        function(indiceResposta, questao) {
-
-            const botoes =
-                document.querySelectorAll(
-                    "#alternativas .selection-card"
-                );
+    observacoes.push(
+        "Revise ortografia, pontuação, acentuação e organização das ideias."
+    );
 
 
-            botoes.forEach(
-                botao => {
-                    botao.disabled = true;
-                }
-            );
+    document.getElementById("resultadoRedacao").innerHTML = `
 
+        <div class="resultado-final">
 
-            respondidas++;
+            <h3>📊 Análise básica</h3>
 
+            <p>Palavras: <strong>${palavras}</strong></p>
 
-            const acertou =
-                indiceResposta ===
-                questao.correta;
+            <p>Caracteres: <strong>${caracteres}</strong></p>
 
+            <p>Parágrafos: <strong>${paragrafos}</strong></p>
 
-            if (acertou) {
-                acertos++;
-            }
+            <h3>Observações</h3>
 
+            <ul>
+                ${observacoes.map(item => `<li>${item}</li>`).join("")}
+            </ul>
 
-            const feedback =
-                document.getElementById(
-                    "feedback"
-                );
+            <p>
+                Esta análise é automática e serve como apoio aos estudos.
+            </p>
 
+        </div>
 
-            if (feedback) {
-
-                feedback.style.display =
-                    "block";
-
-
-                if (acertou) {
-
-                    feedback.innerHTML = `
-                        <strong>
-                            ✅ Resposta correta!
-                        </strong>
-
-                        <p>
-                            ${questao.explicacao}
-                        </p>
-                    `;
-
-                } else {
-
-                    feedback.innerHTML = `
-                        <strong>
-                            ❌ Resposta incorreta.
-                        </strong>
-
-                        <p>
-                            Resposta correta:
-                            <strong>
-                                ${questao.alternativas[
-                                    questao.correta
-                                ]}
-                            </strong>
-                        </p>
-
-                        <p>
-                            ${questao.explicacao}
-                        </p>
-                    `;
-
-                }
-
-            }
-
-
-            const proximo =
-                document.getElementById(
-                    "proximaQuestao"
-                );
-
-
-            if (proximo) {
-                proximo.disabled = false;
-            }
-
-        };
-
-
-    window.proximaQuestao =
-        function() {
-
-            indice++;
-
-
-            if (
-                indice >=
-                questoes.length
-            ) {
-
-                finalizarQuestionario();
-
-                return;
-            }
-
-
-            mostrarQuestao();
-
-        };
-
-
-    function finalizarQuestionario() {
-
-        const erros =
-            questoes.length - acertos;
-
-
-        const porcentagem =
-            Math.round(
-                (acertos / questoes.length) * 100
-            );
-
-
-        let mensagem;
-
-
-        if (porcentagem >= 80) {
-
-            mensagem =
-                "🎉 Excelente resultado!";
-
-        } else if (porcentagem >= 60) {
-
-            mensagem =
-                "👍 Bom trabalho!";
-
-        } el
+    `;
+}
