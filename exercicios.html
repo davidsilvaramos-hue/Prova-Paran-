@@ -1,385 +1,912 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+/* =====================================================
+   PROVA PARANÁ — BANCO DE QUESTÕES
+===================================================== */
 
-    <title>Estudar | Prova Paraná</title>
+const bancoQuestoes = {
 
-    <link rel="stylesheet" href="style.css">
-</head>
+    /* =================================================
+       ENSINO FUNDAMENTAL — 2º ANO — MATEMÁTICA
+    ================================================= */
 
-<body>
+    fundamental: {
 
-<header>
+        "2º ano": {
 
-    <a href="index.html" class="logo">
-        📚 Prova Paraná
-    </a>
+            matematica: [
 
-    <button class="menu-btn" onclick="toggleMenu()">
-        ☰
-    </button>
+                {
+                    pergunta: "Quanto é 25 + 13?",
+                    alternativas: [
+                        "38",
+                        "35",
+                        "48",
+                        "28"
+                    ],
+                    correta: 0,
+                    explicacao:
+                        "25 + 13 = 38. Somamos primeiro as unidades e depois as dezenas."
+                },
 
-    <nav id="menu">
-        <a href="index.html">Início</a>
-        <a href="disciplinas.html">Disciplinas</a>
-        <a href="exercicios.html">Exercícios</a>
-        <a href="objetivos.html">Objetivos</a>
-        <a href="dicas.html">Dicas</a>
-        <a href="resultados.html">Resultados</a>
-        <a href="sobre.html">Sobre</a>
-    </nav>
+                {
+                    pergunta: "Quanto é 50 - 20?",
+                    alternativas: [
+                        "20",
+                        "30",
+                        "40",
+                        "70"
+                    ],
+                    correta: 1,
+                    explicacao:
+                        "50 - 20 = 30."
+                },
 
-</header>
+                {
+                    pergunta: "Quanto é 4 × 3?",
+                    alternativas: [
+                        "7",
+                        "10",
+                        "12",
+                        "14"
+                    ],
+                    correta: 2,
+                    explicacao:
+                        "4 × 3 significa somar 4 três vezes: 4 + 4 + 4 = 12."
+                },
+
+                {
+                    pergunta: "Quanto é 12 ÷ 3?",
+                    alternativas: [
+                        "3",
+                        "4",
+                        "5",
+                        "6"
+                    ],
+                    correta: 1,
+                    explicacao:
+                        "12 dividido por 3 é igual a 4."
+                },
+
+                {
+                    pergunta: "Qual número vem depois de 99?",
+                    alternativas: [
+                        "98",
+                        "100",
+                        "101",
+                        "90"
+                    ],
+                    correta: 1,
+                    explicacao:
+                        "Depois de 99 vem o número 100."
+                }
+
+            ],
+
+            portugues: [
+
+                {
+                    pergunta:
+                        "Qual palavra está escrita corretamente?",
+
+                    alternativas: [
+                        "Casa",
+                        "Caza",
+                        "Kaza",
+                        "Cassa"
+                    ],
+
+                    correta: 0,
+
+                    explicacao:
+                        "A forma correta é 'casa'."
+                },
+
+                {
+                    pergunta:
+                        "Qual destas palavras é um animal?",
+
+                    alternativas: [
+                        "Mesa",
+                        "Cachorro",
+                        "Caderno",
+                        "Escola"
+                    ],
+
+                    correta: 1,
+
+                    explicacao:
+                        "Cachorro é o nome de um animal."
+                },
+
+                {
+                    pergunta:
+                        "Qual é o plural de 'bola'?",
+
+                    alternativas: [
+                        "Bolas",
+                        "Bolaes",
+                        "Bolam",
+                        "Boles"
+                    ],
+
+                    correta: 0,
+
+                    explicacao:
+                        "O plural de bola é bolas."
+                }
+
+            ],
+
+            ciencias: [
+
+                {
+                    pergunta:
+                        "Qual destes é necessário para os seres humanos respirarem?",
+
+                    alternativas: [
+                        "Oxigênio",
+                        "Areia",
+                        "Pedra",
+                        "Plástico"
+                    ],
+
+                    correta: 0,
+
+                    explicacao:
+                        "O oxigênio do ar é utilizado na respiração."
+                },
+
+                {
+                    pergunta:
+                        "Qual destes é um ser vivo?",
+
+                    alternativas: [
+                        "Pedra",
+                        "Cadeira",
+                        "Árvore",
+                        "Copo"
+                    ],
+
+                    correta: 2,
+
+                    explicacao:
+                        "A árvore é um ser vivo."
+                }
+
+            ]
+
+        }
+
+    },
 
 
-<main>
+    /* =================================================
+       ENSINO FUNDAMENTAL — 3º ANO
+    ================================================= */
 
-<section class="page-header">
+    fundamental3: {
 
-    <span class="tag">
-        ÁREA DE ESTUDOS
-    </span>
+        matematica: [
 
-    <h1>
-        O que você quer estudar?
-    </h1>
+            {
+                pergunta:
+                    "Quanto é 125 + 75?",
 
-    <p>
-        Escolha seu nível, sua série, a matéria e
-        depois o tipo de atividade.
-    </p>
+                alternativas: [
+                    "180",
+                    "190",
+                    "200",
+                    "210"
+                ],
 
-</section>
+                correta: 2,
+
+                explicacao:
+                    "125 + 75 = 200."
+            },
+
+            {
+                pergunta:
+                    "Quanto é 300 - 125?",
+
+                alternativas: [
+                    "165",
+                    "175",
+                    "185",
+                    "195"
+                ],
+
+                correta: 1,
+
+                explicacao:
+                    "300 - 125 = 175."
+            }
+
+        ],
+
+        portugues: [
+
+            {
+                pergunta:
+                    "Qual frase está escrita corretamente?",
+
+                alternativas: [
+                    "O menino foi à escola.",
+                    "O menino foi a escola.",
+                    "O menino foi há escola.",
+                    "O menino foi ah escola."
+                ],
+
+                correta: 0,
+
+                explicacao:
+                    "A frase correta é 'O menino foi à escola.'"
+            }
+
+        ]
+
+    },
 
 
-<section class="study-selector">
+    /* =================================================
+       ENSINO MÉDIO — 1º ANO
+    ================================================= */
+
+    medio: {
+
+        "1º ano": {
+
+            matematica: [
+
+                {
+                    pergunta:
+                        "Qual é o resultado de 2² + 3²?",
+
+                    alternativas: [
+                        "10",
+                        "11",
+                        "12",
+                        "13"
+                    ],
+
+                    correta: 3,
+
+                    explicacao:
+                        "2² = 4 e 3² = 9. Portanto, 4 + 9 = 13."
+                },
+
+                {
+                    pergunta:
+                        "Qual é o resultado de 15 × 4?",
+
+                    alternativas: [
+                        "50",
+                        "55",
+                        "60",
+                        "65"
+                    ],
+
+                    correta: 2,
+
+                    explicacao:
+                        "15 × 4 = 60."
+                }
+
+            ],
+
+            portugues: [
+
+                {
+                    pergunta:
+                        "Qual é a principal finalidade de um texto argumentativo?",
+
+                    alternativas: [
+                        "Contar apenas uma história",
+                        "Defender uma ideia usando argumentos",
+                        "Apresentar somente números",
+                        "Ensinar uma receita"
+                    ],
+
+                    correta: 1,
+
+                    explicacao:
+                        "O texto argumentativo busca defender uma ideia por meio de argumentos."
+                }
+
+            ],
+
+            fisica: [
+
+                {
+                    pergunta:
+                        "Qual é a unidade de força no Sistema Internacional?",
+
+                    alternativas: [
+                        "Joule",
+                        "Watt",
+                        "Newton",
+                        "Pascal"
+                    ],
+
+                    correta: 2,
+
+                    explicacao:
+                        "A unidade de força no SI é o Newton (N)."
+                }
+
+            ],
+
+            quimica: [
+
+                {
+                    pergunta:
+                        "Qual é o símbolo químico do oxigênio?",
+
+                    alternativas: [
+                        "O",
+                        "Ox",
+                        "Og",
+                        "C"
+                    ],
+
+                    correta: 0,
+
+                    explicacao:
+                        "O símbolo químico do oxigênio é O."
+                }
+
+            ]
+
+        },
 
 
-    <!-- ETAPA 1 -->
+        /* =============================================
+           ENSINO MÉDIO — 2º ANO
+        ============================================= */
 
-    <div class="selector-step">
+        "2º ano": {
 
-        <div class="step-number">
-            1
-        </div>
+            matematica: [
 
-        <div class="step-content">
+                {
+                    pergunta:
+                        "Qual é o resultado de 3² + 4²?",
 
-            <h2>
-                Escolha seu nível
-            </h2>
+                    alternativas: [
+                        "12",
+                        "20",
+                        "25",
+                        "30"
+                    ],
 
-            <p>
-                Você está no Ensino Fundamental ou Médio?
-            </p>
+                    correta: 2,
+
+                    explicacao:
+                        "3² = 9 e 4² = 16. Então 9 + 16 = 25."
+                },
+
+                {
+                    pergunta:
+                        "Qual é o resultado de 20% de 200?",
+
+                    alternativas: [
+                        "20",
+                        "30",
+                        "40",
+                        "50"
+                    ],
+
+                    correta: 2,
+
+                    explicacao:
+                        "20% de 200 = 0,20 × 200 = 40."
+                }
+
+            ],
+
+            fisica: [
+
+                {
+                    pergunta:
+                        "Qual grandeza mede a quantidade de matéria de um corpo?",
+
+                    alternativas: [
+                        "Força",
+                        "Massa",
+                        "Velocidade",
+                        "Potência"
+                    ],
+
+                    correta: 1,
+
+                    explicacao:
+                        "A massa representa a quantidade de matéria de um corpo."
+                }
+
+            ],
+
+            quimica: [
+
+                {
+                    pergunta:
+                        "Qual partícula possui carga elétrica negativa?",
+
+                    alternativas: [
+                        "Próton",
+                        "Nêutron",
+                        "Elétron",
+                        "Núcleo"
+                    ],
+
+                    correta: 2,
+
+                    explicacao:
+                        "O elétron possui carga elétrica negativa."
+                }
+
+            ]
+
+        },
 
 
-            <div class="option-grid">
+        /* =============================================
+           ENSINO MÉDIO — 3º ANO
+        ============================================= */
+
+        "3º ano": {
+
+            matematica: [
+
+                {
+                    pergunta:
+                        "Qual é a derivada de x²?",
+
+                    alternativas: [
+                        "x",
+                        "2x",
+                        "x²",
+                        "2"
+                    ],
+
+                    correta: 1,
+
+                    explicacao:
+                        "A derivada de x² é 2x."
+                }
+
+            ],
+
+            fisica: [
+
+                {
+                    pergunta:
+                        "Qual é a unidade de energia no SI?",
+
+                    alternativas: [
+                        "Newton",
+                        "Joule",
+                        "Watt",
+                        "Volt"
+                    ],
+
+                    correta: 1,
+
+                    explicacao:
+                        "A unidade de energia no Sistema Internacional é o Joule (J)."
+                }
+
+            ]
+
+        }
+
+    }
+
+};
+
+
+/* =====================================================
+   PEGAR QUESTÕES
+===================================================== */
+
+function obterQuestoes() {
+
+    let nivel =
+        bancoQuestoes[nivelEscolhido];
+
+    if (!nivel) {
+        return [];
+    }
+
+
+    /*
+       Ensino Fundamental usa a estrutura:
+       fundamental → "2º ano" → matemática
+    */
+
+    if (
+        nivelEscolhido === "fundamental"
+    ) {
+
+        const serie =
+            nivel[serieEscolhida];
+
+        if (!serie) {
+
+            /*
+               Algumas questões podem estar
+               cadastradas nas estruturas antigas.
+            */
+
+            if (
+                serieEscolhida === "3º ano" &&
+                bancoQuestoes.fundamental3
+            ) {
+
+                return bancoQuestoes
+                    .fundamental3
+                    [materiaIdEscolhida]
+                    || [];
+
+            }
+
+            return [];
+        }
+
+
+        return serie[
+            materiaIdEscolhida
+        ] || [];
+    }
+
+
+    /*
+       Ensino Médio
+    */
+
+    if (
+        nivelEscolhido === "medio"
+    ) {
+
+        const serie =
+            nivel[serieEscolhida];
+
+        if (!serie) {
+            return [];
+        }
+
+        return serie[
+            materiaIdEscolhida
+        ] || [];
+    }
+
+
+    return [];
+}
+
+
+/* =====================================================
+   INICIAR QUESTIONÁRIO
+===================================================== */
+
+function iniciarQuestionario() {
+
+    const questoes =
+        obterQuestoes();
+
+
+    if (questoes.length === 0) {
+
+        alert(
+            "Ainda não temos questões cadastradas para esta série e matéria."
+        );
+
+        return;
+    }
+
+
+    let indice = 0;
+
+    let acertos = 0;
+
+    let respondidas = 0;
+
+
+    const area =
+        document.getElementById(
+            "studyArea"
+        );
+
+
+    if (!area) {
+        return;
+    }
+
+
+    function mostrarQuestao() {
+
+        const questao =
+            questoes[indice];
+
+
+        const porcentagem =
+            respondidas === 0
+                ? 0
+                : Math.round(
+                    (acertos / respondidas) * 100
+                );
+
+
+        area.innerHTML = `
+
+            <div class="wide">
+
+                <div class="icon">
+                    📝
+                </div>
+
+                <h2>
+                    Questão ${indice + 1}
+                    de ${questoes.length}
+                </h2>
+
+                <div class="selection-summary">
+
+                    <div class="summary-icon">
+                        📊
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Seu desempenho
+                        </strong>
+
+                        <p>
+                            Acertos:
+                            ${acertos}
+                            |
+                            Erros:
+                            ${respondidas - acertos}
+                            |
+                            ${porcentagem}%
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <h3>
+                        ${questao.pergunta}
+                    </h3>
+
+                </div>
+
+
+                <div
+                    id="alternativas"
+                    class="option-grid"
+                >
+
+                </div>
+
+
+                <div
+                    id="feedback"
+                    class="warning"
+                    style="display:none;"
+                >
+                </div>
+
 
                 <button
+                    id="proximaQuestao"
+                    type="button"
                     class="selection-card"
-                    onclick="selecionarNivel('fundamental', this)">
-
-                    <span>🏫</span>
-
-                    <strong>
-                        Ensino Fundamental
-                    </strong>
-
-                    <small>
-                        1º ao 9º ano
-                    </small>
-
-                </button>
-
-
-                <button
-                    class="selection-card"
-                    onclick="selecionarNivel('medio', this)">
-
-                    <span>🎓</span>
-
-                    <strong>
-                        Ensino Médio
-                    </strong>
-
-                    <small>
-                        1º ao 3º ano
-                    </small>
-
+                    style="
+                        margin-top:20px;
+                        min-height:70px;
+                    "
+                    onclick="proximaQuestao()"
+                    disabled
+                >
+                    ➡️ Próxima questão
                 </button>
 
             </div>
 
-        </div>
-
-    </div>
+        `;
 
 
-
-    <!-- ETAPA 2 -->
-
-    <div
-        class="selector-step disabled"
-        id="stepSerie">
-
-        <div class="step-number">
-            2
-        </div>
-
-        <div class="step-content">
-
-            <h2>
-                Escolha sua série
-            </h2>
-
-            <p>
-                Selecione o ano que você está estudando.
-            </p>
+        const alternativas =
+            document.getElementById(
+                "alternativas"
+            );
 
 
-            <div
-                class="option-grid series-grid"
-                id="seriesOptions">
+        questao.alternativas.forEach(
+            (alternativa, i) => {
 
-                <!-- O JavaScript colocará as séries aqui -->
+                const botao =
+                    document.createElement(
+                        "button"
+                    );
 
-            </div>
+                botao.type = "button";
 
-        </div>
+                botao.className =
+                    "selection-card";
 
-    </div>
-
-
-
-    <!-- ETAPA 3 -->
-
-    <div
-        class="selector-step disabled"
-        id="stepMateria">
-
-        <div class="step-number">
-            3
-        </div>
-
-        <div class="step-content">
-
-            <h2>
-                Escolha a matéria
-            </h2>
-
-            <p>
-                Escolha a disciplina que deseja estudar.
-            </p>
-
-
-            <div
-                class="option-grid"
-                id="materiaOptions">
-
-                <!-- O JavaScript colocará as matérias aqui -->
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- ETAPA 4 -->
-
-    <div
-        class="selector-step disabled"
-        id="stepAtividade">
-
-        <div class="step-number">
-            4
-        </div>
-
-        <div class="step-content">
-
-            <h2>
-                O que você quer fazer?
-            </h2>
-
-            <p>
-                Escolha o tipo de atividade.
-            </p>
-
-
-            <div class="option-grid">
-
-
-                <button
-                    class="selection-card"
-                    onclick="iniciarAtividade('questoes')">
-
-                    <span>📝</span>
+                botao.innerHTML = `
+                    <span>
+                        ${String.fromCharCode(65 + i)}
+                    </span>
 
                     <strong>
-                        Questões
+                        ${alternativa}
                     </strong>
-
-                    <small>
-                        Resolva exercícios
-                    </small>
-
-                </button>
+                `;
 
 
-                <button
-                    class="selection-card"
-                    onclick="iniciarAtividade('redacao')">
+                botao.onclick =
+                    function() {
 
-                    <span>✍️</span>
+                        responder(
+                            i,
+                            questao
+                        );
 
-                    <strong>
-                        Redação
-                    </strong>
-
-                    <small>
-                        Escreva e pratique
-                    </small>
-
-                </button>
+                    };
 
 
-                <button
-                    class="selection-card"
-                    onclick="iniciarAtividade('conteudo')">
+                alternativas.appendChild(
+                    botao
+                );
 
-                    <span>📖</span>
+            }
+        );
 
-                    <strong>
-                        Estudar conteúdo
-                    </strong>
-
-                    <small>
-                        Aprenda a matéria
-                    </small>
-
-                </button>
+    }
 
 
-                <button
-                    class="selection-card"
-                    onclick="iniciarAtividade('exemplo')">
+    window.responder =
+        function(indiceResposta, questao) {
 
-                    <span>💡</span>
-
-                    <strong>
-                        Exemplos resolvidos
-                    </strong>
-
-                    <small>
-                        Veja como fazer
-                    </small>
-
-                </button>
+            const botoes =
+                document.querySelectorAll(
+                    "#alternativas .selection-card"
+                );
 
 
-                <button
-                    class="selection-card"
-                    onclick="iniciarAtividade('simulado')">
-
-                    <span>🎯</span>
-
-                    <strong>
-                        Simulado
-                    </strong>
-
-                    <small>
-                        Teste seus conhecimentos
-                    </small>
-
-                </button>
-
-            </div>
-
-        </div>
-
-    </div>
+            botoes.forEach(
+                botao => {
+                    botao.disabled = true;
+                }
+            );
 
 
-
-    <!-- RESUMO DA ESCOLHA -->
-
-    <div
-        id="selectionSummary"
-        class="selection-summary"
-        style="display:none;">
-
-        <span>
-            📚 Sua escolha
-        </span>
-
-        <strong id="summaryText">
-        </strong>
-
-    </div>
+            respondidas++;
 
 
-</section>
+            const acertou =
+                indiceResposta ===
+                questao.correta;
 
 
-<!-- ÁREA QUE RECEBERÁ O CONTEÚDO -->
-
-<section
-    id="studyArea"
-    class="study-area"
-    style="display:none;">
-
-</section>
+            if (acertou) {
+                acertos++;
+            }
 
 
-</main>
+            const feedback =
+                document.getElementById(
+                    "feedback"
+                );
 
 
-<footer>
+            if (feedback) {
 
-    <strong>
-        📚 Prova Paraná
-    </strong>
-
-    <p>
-        Guia independente para estudantes.
-    </p>
-
-    <div class="footer-links">
-
-        <a href="index.html">
-            Início
-        </a>
-
-        <a href="disciplinas.html">
-            Disciplinas
-        </a>
-
-        <a href="exercicios.html">
-            Exercícios
-        </a>
-
-        <a href="dicas.html">
-            Dicas
-        </a>
-
-        <a href="sobre.html">
-            Sobre
-        </a>
-
-    </div>
-
-    <p class="copyright">
-        © 2026 Prova Paraná
-    </p>
-
-</footer>
+                feedback.style.display =
+                    "block";
 
 
-<script src="script.js"></script>
+                if (acertou) {
 
-</body>
-    </html>
+                    feedback.innerHTML = `
+                        <strong>
+                            ✅ Resposta correta!
+                        </strong>
+
+                        <p>
+                            ${questao.explicacao}
+                        </p>
+                    `;
+
+                } else {
+
+                    feedback.innerHTML = `
+                        <strong>
+                            ❌ Resposta incorreta.
+                        </strong>
+
+                        <p>
+                            Resposta correta:
+                            <strong>
+                                ${questao.alternativas[
+                                    questao.correta
+                                ]}
+                            </strong>
+                        </p>
+
+                        <p>
+                            ${questao.explicacao}
+                        </p>
+                    `;
+
+                }
+
+            }
+
+
+            const proximo =
+                document.getElementById(
+                    "proximaQuestao"
+                );
+
+
+            if (proximo) {
+                proximo.disabled = false;
+            }
+
+        };
+
+
+    window.proximaQuestao =
+        function() {
+
+            indice++;
+
+
+            if (
+                indice >=
+                questoes.length
+            ) {
+
+                finalizarQuestionario();
+
+                return;
+            }
+
+
+            mostrarQuestao();
+
+        };
+
+
+    function finalizarQuestionario() {
+
+        const erros =
+            questoes.length - acertos;
+
+
+        const porcentagem =
+            Math.round(
+                (acertos / questoes.length) * 100
+            );
+
+
+        let mensagem;
+
+
+        if (porcentagem >= 80) {
+
+            mensagem =
+                "🎉 Excelente resultado!";
+
+        } else if (porcentagem >= 60) {
+
+            mensagem =
+                "👍 Bom trabalho!";
+
+        } el
