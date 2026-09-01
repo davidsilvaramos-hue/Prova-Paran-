@@ -1,5 +1,16 @@
 /* =========================================
-   MENU DO SITE
+   PROVA PARANÁ — SCRIPT PRINCIPAL
+========================================= */
+
+let nivelEscolhido = "";
+let serieEscolhida = "";
+let materiaEscolhida = "";
+let materiaIdEscolhida = "";
+let atividadeEscolhida = "";
+
+
+/* =========================================
+   MENU
 ========================================= */
 
 function toggleMenu() {
@@ -12,17 +23,7 @@ function toggleMenu() {
 
 
 /* =========================================
-   SISTEMA DE ESCOLHA
-========================================= */
-
-let nivelEscolhido = "";
-let serieEscolhida = "";
-let materiaEscolhida = "";
-let atividadeEscolhida = "";
-
-
-/* =========================================
-   MATÉRIAS
+   MATÉRIAS DO ENSINO FUNDAMENTAL
 ========================================= */
 
 const materiasFundamental = [
@@ -68,6 +69,10 @@ const materiasFundamental = [
     }
 ];
 
+
+/* =========================================
+   MATÉRIAS DO ENSINO MÉDIO
+========================================= */
 
 const materiasMedio = [
     {
@@ -143,13 +148,18 @@ function selecionarNivel(nivel, botao) {
 
     serieEscolhida = "";
     materiaEscolhida = "";
+    materiaIdEscolhida = "";
     atividadeEscolhida = "";
 
+
     document
-        .querySelectorAll(".selection-card")
+        .querySelectorAll(
+            ".study-selector > .selector-step:first-child .selection-card"
+        )
         .forEach(card => {
             card.classList.remove("selected");
         });
+
 
     if (botao) {
         botao.classList.add("selected");
@@ -181,6 +191,8 @@ function selecionarNivel(nivel, botao) {
 
     criarSeries();
 
+    limparAreaEstudo();
+
     atualizarResumo();
 
     rolarPara("stepSerie");
@@ -195,6 +207,7 @@ function criarSeries() {
 
     const container =
         document.getElementById("seriesOptions");
+
 
     if (!container) {
         return;
@@ -221,10 +234,7 @@ function criarSeries() {
             "9º ano"
         ];
 
-    }
-
-
-    if (nivelEscolhido === "medio") {
+    } else {
 
         series = [
             "1º ano",
@@ -240,15 +250,20 @@ function criarSeries() {
         const botao =
             document.createElement("button");
 
+
+        botao.type = "button";
+
         botao.className =
             "selection-card";
+
 
         botao.innerHTML = `
             <span>🎓</span>
             <strong>${serie}</strong>
-            <small>${nivelEscolhido === "fundamental"
-                ? "Ensino Fundamental"
-                : "Ensino Médio"
+            <small>${
+                nivelEscolhido === "fundamental"
+                    ? "Ensino Fundamental"
+                    : "Ensino Médio"
             }</small>
         `;
 
@@ -279,59 +294,48 @@ function selecionarSerie(numero, nome, botao) {
 
     serieEscolhida = nome;
 
+    materiaEscolhida = "";
+    materiaIdEscolhida = "";
+    atividadeEscolhida = "";
 
-    const cards =
-        document.querySelectorAll(
+
+    document
+        .querySelectorAll(
             "#seriesOptions .selection-card"
-        );
-
-
-    cards.forEach(card => {
-
-        card.classList.remove("selected");
-
-    });
+        )
+        .forEach(card => {
+            card.classList.remove("selected");
+        });
 
 
     if (botao) {
-
         botao.classList.add("selected");
-
     }
 
 
     const stepMateria =
         document.getElementById("stepMateria");
 
-
     const stepAtividade =
         document.getElementById("stepAtividade");
 
 
     if (stepMateria) {
-
-        stepMateria.classList.remove(
-            "disabled"
-        );
-
+        stepMateria.classList.remove("disabled");
     }
 
-
     if (stepAtividade) {
-
-        stepAtividade.classList.add(
-            "disabled"
-        );
-
+        stepAtividade.classList.add("disabled");
     }
 
 
     criarMaterias();
 
+    limparAreaEstudo();
+
     atualizarResumo();
 
     rolarPara("stepMateria");
-
 }
 
 
@@ -346,29 +350,17 @@ function criarMaterias() {
 
 
     if (!container) {
-
         return;
-
     }
 
 
     container.innerHTML = "";
 
 
-    let materias = [];
-
-
-    if (nivelEscolhido === "fundamental") {
-
-        materias =
-            materiasFundamental;
-
-    } else {
-
-        materias =
-            materiasMedio;
-
-    }
+    const materias =
+        nivelEscolhido === "fundamental"
+            ? materiasFundamental
+            : materiasMedio;
 
 
     materias.forEach(materia => {
@@ -376,6 +368,8 @@ function criarMaterias() {
         const botao =
             document.createElement("button");
 
+
+        botao.type = "button";
 
         botao.className =
             "selection-card";
@@ -410,66 +404,240 @@ function criarMaterias() {
    ESCOLHER MATÉRIA
 ========================================= */
 
-function selecionarMateria(
-    id,
-    nome,
-    botao
-) {
+function selecionarMateria(id, nome, botao) {
+
+    materiaIdEscolhida = id;
 
     materiaEscolhida = nome;
 
+    atividadeEscolhida = "";
 
-    const cards =
-        document.querySelectorAll(
+
+    document
+        .querySelectorAll(
             "#materiaOptions .selection-card"
-        );
-
-
-    cards.forEach(card => {
-
-        card.classList.remove(
-            "selected"
-        );
-
-    });
+        )
+        .forEach(card => {
+            card.classList.remove("selected");
+        });
 
 
     if (botao) {
-
-        botao.classList.add(
-            "selected"
-        );
-
+        botao.classList.add("selected");
     }
 
 
     const stepAtividade =
-        document.getElementById(
-            "stepAtividade"
-        );
+        document.getElementById("stepAtividade");
 
 
     if (stepAtividade) {
-
-        stepAtividade.classList.remove(
-            "disabled"
-        );
-
+        stepAtividade.classList.remove("disabled");
     }
 
+
+    /*
+       IMPORTANTE:
+
+       A redação só aparece para
+       Língua Portuguesa.
+    */
+
+    atualizarOpcoesDeAtividade();
+
+    limparAreaEstudo();
 
     atualizarResumo();
 
     rolarPara("stepAtividade");
-
 }
 
 
 /* =========================================
-   ESCOLHER ATIVIDADE
+   ATUALIZAR ATIVIDADES
+========================================= */
+
+function atualizarOpcoesDeAtividade() {
+
+    const stepAtividade =
+        document.getElementById("stepAtividade");
+
+
+    if (!stepAtividade) {
+        return;
+    }
+
+
+    const grid =
+        stepAtividade.querySelector(
+            ".option-grid"
+        );
+
+
+    if (!grid) {
+        return;
+    }
+
+
+    /*
+       Todas as matérias possuem:
+       - Questões
+       - Conteúdo
+       - Exemplos
+       - Simulado
+
+       Apenas Português possui:
+       - Redação
+    */
+
+
+    let html = `
+
+        <button
+            type="button"
+            class="selection-card"
+            onclick="iniciarAtividade('questoes')">
+
+            <span>📝</span>
+
+            <strong>
+                Questões
+            </strong>
+
+            <small>
+                Resolva exercícios
+            </small>
+
+        </button>
+
+
+        <button
+            type="button"
+            class="selection-card"
+            onclick="iniciarAtividade('conteudo')">
+
+            <span>📖</span>
+
+            <strong>
+                Estudar conteúdo
+            </strong>
+
+            <small>
+                Aprenda a matéria
+            </small>
+
+        </button>
+
+
+        <button
+            type="button"
+            class="selection-card"
+            onclick="iniciarAtividade('exemplo')">
+
+            <span>💡</span>
+
+            <strong>
+                Exemplos resolvidos
+            </strong>
+
+            <small>
+                Veja como fazer
+            </small>
+
+        </button>
+
+
+        <button
+            type="button"
+            class="selection-card"
+            onclick="iniciarAtividade('simulado')">
+
+            <span>🎯</span>
+
+            <strong>
+                Simulado
+            </strong>
+
+            <small>
+                Teste seus conhecimentos
+            </small>
+
+        </button>
+
+    `;
+
+
+    /*
+       REDAÇÃO:
+       somente Português.
+    */
+
+    if (materiaIdEscolhida === "portugues") {
+
+        html += `
+
+            <button
+                type="button"
+                class="selection-card"
+                onclick="iniciarAtividade('redacao')">
+
+                <span>✍️</span>
+
+                <strong>
+                    Redação
+                </strong>
+
+                <small>
+                    Escreva e pratique
+                </small>
+
+            </button>
+
+        `;
+
+    }
+
+
+    grid.innerHTML = html;
+}
+
+
+/* =========================================
+   INICIAR ATIVIDADE
 ========================================= */
 
 function iniciarAtividade(tipo) {
+
+    /*
+       Segurança:
+       impede redação em qualquer matéria
+       que não seja Português.
+    */
+
+    if (
+        tipo === "redacao" &&
+        materiaIdEscolhida !== "portugues"
+    ) {
+
+        alert(
+            "A Redação está disponível somente para Língua Portuguesa."
+        );
+
+        return;
+    }
+
+
+    if (!nivelEscolhido ||
+        !serieEscolhida ||
+        !materiaEscolhida) {
+
+        alert(
+            "Escolha o nível, a série e a matéria primeiro."
+        );
+
+        return;
+    }
+
 
     atividadeEscolhida = tipo;
 
@@ -477,24 +645,12 @@ function iniciarAtividade(tipo) {
     atualizarResumo();
 
 
-    /*
-       Por enquanto mostramos uma mensagem.
-       Na próxima etapa vamos ligar cada botão
-       ao banco de questões, conteúdos,
-       exemplos, simulados e redação.
-    */
-
-
     const studyArea =
-        document.getElementById(
-            "studyArea"
-        );
+        document.getElementById("studyArea");
 
 
     if (!studyArea) {
-
         return;
-
     }
 
 
@@ -506,69 +662,64 @@ function iniciarAtividade(tipo) {
     let texto = "";
 
 
-    if (tipo === "questoes") {
+    switch (tipo) {
 
-        titulo =
-            "📝 Questões";
+        case "questoes":
 
-        texto =
-            "Você escolheu fazer questões de " +
-            materiaEscolhida +
-            " do " +
-            serieEscolhida +
-            ".";
+            titulo = "📝 Questões";
 
-    }
+            texto =
+                `Você escolheu fazer questões de ${materiaEscolhida} do ${serieEscolhida}.`;
+
+            break;
 
 
-    if (tipo === "redacao") {
+        case "redacao":
 
-        titulo =
-            "✍️ Redação";
+            titulo = "✍️ Redação";
 
-        texto =
-            "Você escolheu praticar redação.";
+            texto =
+                `Você escolheu praticar redação no ${serieEscolhida}.`;
 
-    }
-
-
-    if (tipo === "conteudo") {
-
-        titulo =
-            "📖 Conteúdo";
-
-        texto =
-            "Aqui aparecerá o conteúdo de " +
-            materiaEscolhida +
-            " do " +
-            serieEscolhida +
-            ".";
-
-    }
+            break;
 
 
-    if (tipo === "exemplo") {
+        case "conteudo":
 
-        titulo =
-            "💡 Exemplos resolvidos";
+            titulo = "📖 Estudar conteúdo";
 
-        texto =
-            "Aqui aparecerão exemplos explicados " +
-            "passo a passo.";
+            texto =
+                `Aqui aparecerão os conteúdos de ${materiaEscolhida} do ${serieEscolhida}.`;
 
-    }
+            break;
 
 
-    if (tipo === "simulado") {
+        case "exemplo":
 
-        titulo =
-            "🎯 Simulado";
+            titulo = "💡 Exemplos resolvidos";
 
-        texto =
-            "Aqui será criado um simulado " +
-            "de acordo com sua série e matéria.";
+            texto =
+                `Aqui aparecerão exemplos de ${materiaEscolhida} explicados passo a passo.`;
+
+            break;
+
+
+        case "simulado":
+
+            titulo = "🎯 Simulado";
+
+            texto =
+                `Aqui será criado um simulado de ${materiaEscolhida} para ${serieEscolhida}.`;
+
+            break;
 
     }
+
+
+    const nomeNivel =
+        nivelEscolhido === "fundamental"
+            ? "Ensino Fundamental"
+            : "Ensino Médio";
 
 
     studyArea.innerHTML = `
@@ -591,10 +742,7 @@ function iniciarAtividade(tipo) {
                 <strong>
                     Nível:
                 </strong>
-                ${nivelEscolhido === "fundamental"
-                    ? "Ensino Fundamental"
-                    : "Ensino Médio"
-                }
+                ${nomeNivel}
             </p>
 
             <p>
@@ -620,10 +768,10 @@ function iniciarAtividade(tipo) {
                 </strong>
 
                 <p>
-                    O sistema de questões,
-                    exemplos, conteúdos,
-                    simulados e redação será
-                    conectado nesta área.
+                    Agora vamos conectar esta área
+                    ao banco de questões, conteúdos,
+                    exemplos, simulados e sistema
+                    de resultados.
                 </p>
 
             </div>
@@ -634,12 +782,11 @@ function iniciarAtividade(tipo) {
 
 
     rolarPara("studyArea");
-
 }
 
 
 /* =========================================
-   RESUMO
+   RESUMO DA ESCOLHA
 ========================================= */
 
 function atualizarResumo() {
@@ -649,7 +796,6 @@ function atualizarResumo() {
             "selectionSummary"
         );
 
-
     const texto =
         document.getElementById(
             "summaryText"
@@ -657,13 +803,11 @@ function atualizarResumo() {
 
 
     if (!resumo || !texto) {
-
         return;
-
     }
 
 
-    let partes = [];
+    const partes = [];
 
 
     if (nivelEscolhido) {
@@ -678,27 +822,35 @@ function atualizarResumo() {
 
 
     if (serieEscolhida) {
-
-        partes.push(
-            serieEscolhida
-        );
-
+        partes.push(serieEscolhida);
     }
 
 
     if (materiaEscolhida) {
-
-        partes.push(
-            materiaEscolhida
-        );
-
+        partes.push(materiaEscolhida);
     }
 
 
     if (atividadeEscolhida) {
 
+        const nomes = {
+
+            questoes: "Questões",
+
+            redacao: "Redação",
+
+            conteudo: "Conteúdo",
+
+            exemplo: "Exemplos resolvidos",
+
+            simulado: "Simulado"
+
+        };
+
+
         partes.push(
-            atividadeEscolhida
+            nomes[atividadeEscolhida]
+            || atividadeEscolhida
         );
 
     }
@@ -720,12 +872,35 @@ function atualizarResumo() {
 
     texto.textContent =
         partes.join(" → ");
-
 }
 
 
 /* =========================================
-   ROLAGEM
+   LIMPAR ÁREA DE ESTUDO
+========================================= */
+
+function limparAreaEstudo() {
+
+    const studyArea =
+        document.getElementById(
+            "studyArea"
+        );
+
+
+    if (!studyArea) {
+        return;
+    }
+
+
+    studyArea.innerHTML = "";
+
+    studyArea.style.display =
+        "none";
+}
+
+
+/* =========================================
+   ROLAR ATÉ UMA SEÇÃO
 ========================================= */
 
 function rolarPara(id) {
@@ -735,9 +910,7 @@ function rolarPara(id) {
 
 
     if (!elemento) {
-
         return;
-
     }
 
 
@@ -749,12 +922,11 @@ function rolarPara(id) {
         });
 
     }, 150);
-
 }
 
 
 /* =========================================
-   FECHAR MENU NO CELULAR
+   MENU NO CELULAR
 ========================================= */
 
 document.addEventListener(
