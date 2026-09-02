@@ -1,176 +1,300 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prova Paraná | Portal de Estudos</title>
+
     <link rel="stylesheet" href="style.css">
+
+    <title>Objetivos | Prova Paraná</title>
 </head>
 
 <body>
 
-<header class="topo">
+    <!-- CABEÇALHO -->
+    <header class="header">
+        <div class="container header-content">
 
-    <a href="index.html" class="logo">Prova Paraná</a>
+            <a href="index.html" class="logo">
+                <div class="logo-icon">📚</div>
+                <span>PROVA <strong>PARANÁ</strong></span>
+            </a>
 
-    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+            <button class="menu-btn" aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
-    <nav id="menu">
-        <a href="index.html">Início</a>
-        <a href="#estudos">Disciplinas</a>
-        <a href="#dicas">Dicas</a>
-        <a href="resultados.html">Resultados</a>
-        <a href="#sobre">Sobre</a>
-    </nav>
+            <nav class="main-nav">
+                <ul>
 
-</header>
+                    <li>
+                        <a href="index.html">Início</a>
+                    </li>
 
-<main>
+                    <li class="dropdown">
+                        <button class="dropdown-btn">
+                            Sobre ▾
+                        </button>
 
-<section class="hero">
+                        <div class="dropdown-menu">
+                            <a href="index.html#sobre">O que é</a>
+                            <a href="objetivos.html">Objetivos</a>
+                        </div>
+                    </li>
 
-    <div class="hero-text">
+                    <li>
+                        <a href="disciplinas.html">Disciplinas</a>
+                    </li>
 
-        <span class="tag">PORTAL EDUCACIONAL</span>
+                    <li>
+                        <a href="index.html#dicas">Dicas</a>
+                    </li>
 
-        <h1>Prepare-se para a <strong>Prova Paraná</strong></h1>
+                    <li>
+                        <a href="index.html#resultados">Resultados</a>
+                    </li>
 
-        <p>
-            Estude conteúdos, pratique questões, veja exemplos,
-            faça simulados e acompanhe seu desempenho.
-        </p>
+                    <li>
+                        <a href="index.html#contato">Contato</a>
+                    </li>
 
-        <a href="#estudos" class="botao">Começar agora</a>
+                </ul>
+            </nav>
 
-    </div>
-
-    <div class="hero-img">
-        <img src="cartaz_prova_parana.png" alt="Cartaz da Prova Paraná">
-    </div>
-
-</section>
-
-
-<section id="estudos" class="secao">
-
-    <div class="titulo-secao">
-        <span>ESTUDOS</span>
-        <h2>Escolha seu nível</h2>
-        <p>Selecione o nível, a série e a disciplina.</p>
-    </div>
-
-    <div class="nivel-container">
-
-        <button class="nivel-card" onclick="selecionarNivel('fundamental')">
-            <div class="icone">📚</div>
-            <h3>Ensino Fundamental</h3>
-            <p>1º ao 9º ano</p>
-        </button>
-
-        <button class="nivel-card" onclick="selecionarNivel('medio')">
-            <div class="icone">🎓</div>
-            <h3>Ensino Médio</h3>
-            <p>1º ao 3º ano</p>
-        </button>
-
-    </div>
-
-    <div id="selecao">
-
-        <div id="seriesArea"></div>
-        <div id="materiasArea"></div>
-        <div id="atividadesArea"></div>
-
-    </div>
-
-    <div id="areaEstudo"></div>
-
-</section>
+        </div>
+    </header>
 
 
-<section id="dicas" class="secao">
+    <!-- CONTEÚDO -->
+    <main>
 
-    <div class="titulo-secao">
-        <span>DICAS</span>
-        <h2>Como estudar melhor?</h2>
-    </div>
+        <section class="hero">
+            <div class="container">
 
-    <div class="cards">
+                <p class="section-label">
+                    OBJETIVOS
+                </p>
 
-        <article class="info-card">
-            <div class="icone">📝</div>
-            <h3>Pratique</h3>
-            <p>Resolva questões para descobrir seus pontos fortes e dificuldades.</p>
-        </article>
+                <h1>
+                    Para que serve a Prova Paraná?
+                </h1>
 
-        <article class="info-card">
-            <div class="icone">📖</div>
-            <h3>Revise</h3>
-            <p>Revise os conteúdos que você teve mais dificuldade.</p>
-        </article>
+                <p class="hero-text">
+                    A avaliação ajuda a identificar dificuldades
+                    e melhorar a aprendizagem dos estudantes.
+                </p>
 
-        <article class="info-card">
-            <div class="icone">⏰</div>
-            <h3>Tenha rotina</h3>
-            <p>Estude um pouco todos os dias e mantenha constância.</p>
-        </article>
-
-    </div>
-
-</section>
+            </div>
+        </section>
 
 
-<section id="sobre" class="secao">
+        <section class="section">
+            <div class="container">
 
-    <div class="titulo-secao">
-        <span>SOBRE</span>
-        <h2>Sobre o portal</h2>
-    </div>
+                <p class="section-label">
+                    PRINCIPAIS OBJETIVOS
+                </p>
 
-    <p>
-        Este é um projeto educacional criado para ajudar estudantes
-        a estudar e praticar conteúdos relacionados à Prova Paraná.
-    </p>
-
-    <p>
-        O portal possui questões, conteúdos, exemplos, simulados,
-        redação e acompanhamento de resultados.
-    </p>
-
-</section>
-
-</main>
+                <h2>
+                    Como a Prova Paraná contribui para a educação?
+                </h2>
 
 
-<footer>
+                <div class="cards">
 
-    <div>
-        <h3>Prova Paraná</h3>
-        <p>Portal de estudos educacional.</p>
-    </div>
+                    <!-- CARD 1 -->
+                    <div class="card">
 
-    <div>
-        <h4>Links</h4>
-        <a href="index.html">Início</a>
-        <a href="#estudos">Disciplinas</a>
-        <a href="resultados.html">Resultados</a>
-    </div>
+                        <div class="card-icon">
+                            🎯
+                        </div>
 
-    <div>
-        <h4>Projeto</h4>
-        <p>Projeto escolar para fins educacionais.</p>
-    </div>
+                        <h3>
+                            Identificar dificuldades
+                        </h3>
 
-</footer>
+                        <p>
+                            Identificar quais conteúdos e habilidades
+                            os estudantes precisam desenvolver melhor.
+                        </p>
+
+                    </div>
 
 
-<script src="script.js"></script>
-<script src="resultados.js"></script>
-<script src="questoes.js"></script>
-<script src="conteudos.js"></script>
-<script src="exemplos.js"></script>
-<script src="redacao.js"></script>
-<script src="simulados.js"></script>
+                    <!-- CARD 2 -->
+                    <div class="card">
+
+                        <div class="card-icon">
+                            📚
+                        </div>
+
+                        <h3>
+                            Apoiar os professores
+                        </h3>
+
+                        <p>
+                            Ajudar os professores a planejar aulas
+                            e atividades de acordo com as necessidades
+                            dos estudantes.
+                        </p>
+
+                    </div>
+
+
+                    <!-- CARD 3 -->
+                    <div class="card">
+
+                        <div class="card-icon">
+                            📈
+                        </div>
+
+                        <h3>
+                            Melhorar a aprendizagem
+                        </h3>
+
+                        <p>
+                            Utilizar os resultados para criar ações
+                            que contribuam para a melhoria da educação.
+                        </p>
+
+                    </div>
+
+
+                    <!-- CARD 4 -->
+                    <div class="card">
+
+                        <div class="card-icon">
+                            🏫
+                        </div>
+
+                        <h3>
+                            Orientar a escola
+                        </h3>
+
+                        <p>
+                            Auxiliar a direção e a equipe pedagógica
+                            na tomada de decisões educacionais.
+                        </p>
+
+                    </div>
+
+
+                    <!-- CARD 5 -->
+                    <div class="card">
+
+                        <div class="card-icon">
+                            👨‍🎓
+                        </div>
+
+                        <h3>
+                            Acompanhar os estudantes
+                        </h3>
+
+                        <p>
+                            Permitir acompanhar o desenvolvimento
+                            e perceber quais áreas precisam de mais atenção.
+                        </p>
+
+                    </div>
+
+
+                    <!-- CARD 6 -->
+                    <div class="card">
+
+                        <div class="card-icon">
+                            💡
+                        </div>
+
+                        <h3>
+                            Planejar ações
+                        </h3>
+
+                        <p>
+                            Usar as informações da avaliação para
+                            planejar ações que favoreçam a aprendizagem.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- CHAMADA -->
+        <section class="cta">
+
+            <div class="container">
+
+                <h2>
+                    A avaliação ajuda a transformar a educação
+                </h2>
+
+                <p>
+                    Os resultados permitem conhecer melhor as
+                    necessidades dos estudantes e buscar melhorias.
+                </p>
+
+                <a href="index.html" class="btn">
+                    Voltar para o início
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- RODAPÉ -->
+    <footer id="contato" class="footer">
+
+        <div class="container">
+
+            <h3>
+                PROVA PARANÁ
+            </h3>
+
+            <p>
+                Educação que transforma.
+            </p>
+
+            <div class="footer-links">
+
+                <a href="index.html">
+                    Início
+                </a>
+
+                <a href="disciplinas.html">
+                    Disciplinas
+                </a>
+
+                <a href="index.html#dicas">
+                    Dicas
+                </a>
+
+                <a href="index.html#contato">
+                    Contato
+                </a>
+
+            </div>
+
+            <p class="copyright">
+                © 2026 Prova Paraná — Projeto educacional
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="script.js"></script>
 
 </body>
+
 </html>
