@@ -1,34 +1,54 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
 
-    // MENU MOBILE
     const menuBtn = document.querySelector(".menu-btn");
     const mainNav = document.querySelector(".main-nav");
-
-    if (menuBtn && mainNav) {
-        menuBtn.addEventListener("click", () => {
-            mainNav.classList.toggle("active");
-            menuBtn.classList.toggle("active");
-        });
-    }
-
-
-    // MENU "SOBRE"
     const dropdownBtn = document.querySelector(".dropdown-btn");
     const dropdown = document.querySelector(".dropdown");
 
-    if (dropdownBtn && dropdown) {
-        dropdownBtn.addEventListener("click", (event) => {
-            event.preventDefault();
-            dropdown.classList.toggle("active");
+
+    /* =========================
+       MENU HAMBÚRGUER
+    ========================= */
+
+    if (menuBtn && mainNav) {
+
+        menuBtn.addEventListener("click", function () {
+
+            mainNav.classList.toggle("active");
+            menuBtn.classList.toggle("active");
+
         });
+
     }
 
 
-    // FECHAR MENU AO CLICAR EM UM LINK
+    /* =========================
+       DROPDOWN SOBRE
+    ========================= */
+
+    if (dropdownBtn && dropdown) {
+
+        dropdownBtn.addEventListener("click", function (event) {
+
+            event.preventDefault();
+
+            dropdown.classList.toggle("active");
+
+        });
+
+    }
+
+
+    /* =========================
+       FECHAR MENU AO CLICAR
+    ========================= */
+
     const navLinks = document.querySelectorAll(".main-nav a");
 
-    navLinks.forEach((link) => {
-        link.addEventListener("click", () => {
+    navLinks.forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
             if (mainNav) {
                 mainNav.classList.remove("active");
             }
@@ -36,21 +56,55 @@ document.addEventListener("DOMContentLoaded", () => {
             if (menuBtn) {
                 menuBtn.classList.remove("active");
             }
+
         });
+
     });
 
 
-    // FECHAR MENU AO CLICAR FORA DELE
-    document.addEventListener("click", (event) => {
+    /* =========================
+       FECHAR AO CLICAR FORA
+    ========================= */
 
-        if (
-            mainNav &&
-            menuBtn &&
-            !mainNav.contains(event.target) &&
-            !menuBtn.contains(event.target)
-        ) {
+    document.addEventListener("click", function (event) {
+
+        if (!mainNav || !menuBtn) {
+            return;
+        }
+
+        const clicouNoMenu =
+            mainNav.contains(event.target);
+
+        const clicouNoBotao =
+            menuBtn.contains(event.target);
+
+        if (!clicouNoMenu && !clicouNoBotao) {
+
             mainNav.classList.remove("active");
             menuBtn.classList.remove("active");
+
+            if (dropdown) {
+                dropdown.classList.remove("active");
+            }
+
+        }
+
+    });
+
+
+    /* =========================
+       FECHAR DROPDOWN AO CLICAR FORA
+    ========================= */
+
+    document.addEventListener("click", function (event) {
+
+        if (
+            dropdown &&
+            !dropdown.contains(event.target)
+        ) {
+
+            dropdown.classList.remove("active");
+
         }
 
     });
