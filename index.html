@@ -1,19 +1,172 @@
-<nav class="main-nav">
-    <ul>
-        <li><a href="index.html">Início</a></li>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <li class="dropdown">
-            <button class="dropdown-btn">Sobre ▾</button>
+    <link rel="stylesheet" href="style.css">
 
-            <div class="dropdown-menu">
-                <a href="index.html#sobre">O que é</a>
-                <a href="index.html#objetivos">Objetivos</a>
+    <title>Disciplinas | Prova Paraná</title>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="container header-content">
+
+        <a href="index.html" class="logo">
+            <div class="logo-icon">📚</div>
+            <span>PROVA <strong>PARANÁ</strong></span>
+        </a>
+
+        <button class="menu-btn" aria-label="Abrir menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="main-nav">
+            <ul>
+                <li>
+                    <a href="index.html">Início</a>
+                </li>
+
+                <li class="dropdown">
+                    <button class="dropdown-btn">Sobre ▾</button>
+
+                    <div class="dropdown-menu">
+                        <a href="index.html#sobre">O que é</a>
+                        <a href="index.html#objetivos">Objetivos</a>
+                    </div>
+                </li>
+
+                <li>
+                    <a href="disciplinas.html">Disciplinas</a>
+                </li>
+
+                <li>
+                    <a href="index.html#dicas">Dicas</a>
+                </li>
+
+                <li>
+                    <a href="index.html#resultados">Resultados</a>
+                </li>
+
+                <li>
+                    <a href="index.html#contato">Contato</a>
+                </li>
+            </ul>
+        </nav>
+
+    </div>
+</header>
+
+
+<main>
+
+    <section class="hero">
+        <div class="container">
+
+            <p class="section-label">DISCIPLINAS AVALIADAS</p>
+
+            <h1>
+                Língua Portuguesa e<br>
+                Matemática
+            </h1>
+
+            <p class="hero-text">
+                A Prova Paraná avalia conhecimentos e habilidades
+                importantes para a aprendizagem.
+            </p>
+
+        </div>
+    </section>
+
+
+    <section class="disciplinas">
+        <div class="container">
+
+            <div class="disciplina-card">
+
+                <div class="disciplina-icon">
+                    📖
+                </div>
+
+                <h2>Língua Portuguesa</h2>
+
+                <p>
+                    Avalia habilidades de leitura, interpretação de textos,
+                    linguagem e diferentes formas de comunicação.
+                </p>
+
             </div>
-        </li>
 
-        <li><a href="index.html#disciplinas">Disciplinas</a></li>
-        <li><a href="index.html#dicas">Dicas</a></li>
-        <li><a href="index.html#resultados">Resultados</a></li>
-        <li><a href="index.html#contato">Contato</a></li>
-    </ul>
-</nav>
+
+            <div class="disciplina-card">
+
+                <div class="disciplina-icon">
+                    🔢
+                </div>
+
+                <h2>Matemática</h2>
+
+                <p>
+                    Avalia conhecimentos relacionados a cálculos,
+                    resolução de problemas, raciocínio lógico e
+                    interpretação de informações.
+                </p>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="cta">
+        <div class="container">
+
+            <h2>Prepare-se para a Prova Paraná!</h2>
+
+            <p>
+                Estude com calma, revise os conteúdos e confie
+                no que você aprendeu.
+            </p>
+
+            <a href="index.html#dicas" class="btn">
+                Ver dicas de estudo
+            </a>
+
+        </div>
+    </section>
+
+</main>
+
+
+<footer class="footer">
+    <div class="container">
+
+        <h3>PROVA PARANÁ</h3>
+
+        <p>
+            Educação que transforma.
+        </p>
+
+        <div class="footer-links">
+            <a href="index.html">Início</a>
+            <a href="disciplinas.html">Disciplinas</a>
+            <a href="index.html#dicas">Dicas</a>
+            <a href="index.html#contato">Contato</a>
+        </div>
+
+        <p class="copyright">
+            © 2026 Prova Paraná. Projeto educacional.
+        </p>
+
+    </div>
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
